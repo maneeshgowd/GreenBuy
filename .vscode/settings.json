@@ -1,0 +1,11 @@
+{
+  "editor.fontLigatures": true,
+  "editor.fontWeight": 450,
+  "editor.fontFamily": "'Fira Code'",
+  "editor.fontSize": 13,
+  "C_Cpp.errorSquiggles": "Enabled",
+  "files.associations": {
+    "cprogram.C": "cpp",
+    "tempCodeRunnerFile.C": "cpp"
+  }
+}

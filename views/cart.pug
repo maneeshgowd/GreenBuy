@@ -1,0 +1,94 @@
+extends base
+
+block content 
+  .wrapper.cart-wrapper
+    main.cart-main
+      header.header--prod
+        nav.nav--logo
+          a.nav__ele.header--logo(href='/')
+            img.header__logo.icons(src='/icons/green-icon.svg' alt='GreenBuy logo')
+            span.logo-title GreenBuy
+        nav.links
+          a.links__ele(href='/') home
+          a.links__ele(href='/pots') pots
+          // <a href="#" class="links__ele">contact</a>
+          a.links__ele(href='/products') products
+        nav.user-nav
+          span#cart-items.cart-items
+          a(href='/cart')
+            img.nav--icons(src='/icons/cart.svg' alt='user cart')
+          a(href='/wishlist')
+            img.nav--icons(src='/icons/heart.svg' alt='wishlist')
+          a(href='/my-account')
+            img.nav--icons(src='/icons/user-avatar.svg' alt='user')
+        img#product-hamburger.hamburger.icons(src='/icons/hamburger-2.svg' alt='menu-bar')
+      section.purchased
+        .purchased-items
+          .items
+            img.items__image(src='/img/leaf-1.jpg' alt='product-image')
+            .items__content
+              h2.items__name Marigold plant
+              h3.items__cat Air purifier
+              h2.items__price &#x20B9; 299
+            .items__feature
+              div
+                button.items__feature__btn.btn--decrement &minus;
+                input.product-count(type='number' min='1' max='10')
+                button.items__feature__btn.btn--increment &amp;plus;
+              .purchase-icons
+                img.purchase-icon(src='/icons/heart.svg' alt='wishlist' title='Wishlist')
+                img.purchase-icon(src='/icons/delete.svg' alt='Remove item' title='Remove item')
+          .items
+            img.items__image(src='/img/leaf-1.jpg' alt='product-image')
+            .items__content
+              h2.items__name Marigold plant
+              h3.items__cat Air purifier
+              h2.items__price &#x20B9; 299
+            .items__feature
+              div
+                button.items__feature__btn.btn--decrement &minus;
+                input.product-count(type='number' min='1' max='10')
+                button.items__feature__btn.btn--increment &amp;plus;
+              .purchase-icons
+                img.purchase-icon(src='/icons/heart.svg' alt='wishlist' title='Wishlist')
+                img.purchase-icon(src='/icons/delete.svg' alt='Remove item' title='Remove item')
+          .items
+            img.items__image(src='/img/leaf-1.jpg' alt='product-image')
+            .items__content
+              h2.items__name Marigold plant
+              h3.items__cat Air purifier
+              h2.items__price &#x20B9; 299
+            .items__feature
+              div
+                button.items__feature__btn.btn--decrement &minus;
+                input.product-count(type='number' min='1' max='10')
+                button.items__feature__btn.btn--increment &plus;
+              .purchase-icons
+                img.purchase-icon(src='/icons/heart.svg' alt='wishlist' title='Wishlist')
+                img.purchase-icon(src='/icons/delete.svg' alt='Remove item' title='Remove item')
+          .items
+            img.items__image(src='/img/leaf-1.jpg' alt='product-image')
+            .items__content
+              h2.items__name Marigold plant
+              h3.items__cat Air purifier
+              h2.items__price &#x20B9; 299
+            .items__feature
+              div
+                button.items__feature__btn.btn--decrement &minus;
+                input.product-count(type='number' min='1' max='10')
+                button.items__feature__btn.btn--increment &amp;plus;
+              .purchase-icons
+                img.purchase-icon(src='/icons/heart.svg' alt='wishlist' title='Wishlist')
+                img.purchase-icon(src='/icons/delete.svg' alt='Remove item' title='Remove item')
+        aside.checkout
+          h1.checkout-title checkout!
+          h2.checkout-items
+            | Total items: 
+            span 10
+          h2.checkout-price
+            | Total price: 
+            span &#x20B9;1000
+          button.checkout-btn checkout
+    img.greenbuy-watermark.cart-watermark(src='/icons/green-icon.svg' alt='icon')
+    include _menu 
+

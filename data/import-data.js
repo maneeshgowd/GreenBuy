@@ -1,0 +1,37 @@
+const fs = require("fs");
+const dotenv = require("dotenv");
+
+dotenv.config({ path: `${__dirname}/../config.env` });
+
+const mongoose = require("mongoose");
+const productModel = require("../models/productModel");
+
+const DB = process.env.DATABASE.replace("<password>", process.env.DATABASE_PASSWORD);
+mongoose.connect(DB);
+
+const products = JSON.parse(fs.readFileSync(`${__dirname}/plants.json`));
+
+const importData = async function () {
+  try {
+    await productModel.create(products, { validateBeforeSave: true });
+    console.log("Data uploaded successfully!");
+  } catch (err) {
+    console.log(err);
+  }
+
+  process.exit();
+};
+
+const deleteData = async function () {
+  try {
+    await productModel.deleteMany();
+    console.log("Data deleted successfully!");
+  } catch (err) {
+    console.log(err);
+  }
+
+  process.exit();
+};
+
+if (process.argv[2] === "--import") importData();
+if (process.argv[2] === "--delete") deleteData();

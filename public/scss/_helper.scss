@@ -1,0 +1,160 @@
+// UI colors
+$colors: (
+  accent-clr: #176c36,
+  typo-clr: #4a4a4a,
+  accent-dark: #063720,
+  bg-clr: #eeeeee,
+  white-clr: #fff,
+  invalid: #e40d43e1,
+);
+
+// UI fonts
+$font-size: (
+  regular: 400,
+  medium: 500,
+  semi-bold: 600,
+  bold: 700,
+  extra-bold: 800,
+  dark: 900,
+);
+
+$radius: 0.2em;
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+@function font($font-name) {
+  @return map-get($font-size, $font-name);
+}
+
+// Quick flex
+@mixin flex($justify-content: center, $align-items: center) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin font($color, $size, $weight) {
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+}
+
+@mixin anchor($font-size: 1rem, $clr: color(white-clr)) {
+  color: $clr;
+  font-size: $font-size;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: font(semi-bold);
+}
+
+@mixin anchor-anim($clr) {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10%;
+    border: 1px solid $clr;
+    transition: width 300ms ease;
+  }
+
+  &:hover::before,
+  &:focus::before {
+    width: 110%;
+  }
+}
+
+@mixin responsive {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 81.25em;
+}
+
+@mixin buttonStyle($bg-clr, $clr, $pad-top: 0.8rem, $pad-left: 1.2rem) {
+  padding: $pad-top $pad-left;
+  background-color: $bg-clr;
+  border-radius: $radius;
+  @include anchor(1rem, $clr);
+  z-index: 2;
+}
+
+@mixin buttonAnim() {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: "";
+    inset: 0;
+    border-radius: $radius;
+    background: color(accent-dark);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  &:hover::before,
+  &:focus::before {
+    transform: scaleX(1);
+    transition: all 300ms ease;
+  }
+}
+
+@mixin button(
+  $bg-clr: #fff,
+  $clr,
+  $pad-top: 0.8rem,
+  $pad-left: 1.2rem,
+  $pad-h-t: 0.6rem,
+  $pad-h-l: 1rem
+) {
+  @include buttonStyle($bg-clr, $clr, $pad-top, $pad-left);
+  outline: 0px solid $bg-clr;
+  outline-offset: 0px;
+  transition: all 300ms ease;
+
+  &:hover,
+  &:focus {
+    border-radius: 0;
+    color: $bg-clr;
+    padding: $pad-h-t $pad-h-l;
+    background-color: transparent;
+    outline: 2px solid $bg-clr;
+    outline-offset: 6px;
+  }
+}
+
+@mixin input {
+  font-family: inherit;
+  outline: 0;
+  padding: 0.8em 0.4em;
+  width: 100%;
+  border: 1px solid color(accent-clr);
+  border-radius: $radius;
+  @include font(color(typo-clr), 0.9rem, font(medium));
+}
+
+
+
+/////////////////////////////////////////////
+
+@mixin tablet() {
+  @media only screen and(min-width:700px) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media only screen and(min-width:900px) {
+    @content;
+  }
+}
+
+@mixin large() {
+  @media only screen and(min-width:1500px) {
+    @content;
+  }
+}

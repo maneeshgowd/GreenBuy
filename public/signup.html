@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="scss/style.scss" />
+    <script src="js/controller.js" defer></script>
+    <title>login</title>
+  </head>
+  <body style="overflow: hidden">
+    <header class="header">
+      <nav class="nav--logo">
+        <a href="/" class="nav__ele header--logo">
+          <img src="icons/green-icon.svg" alt="GreenBuy logo" class="header__logo icons" />
+          <span class="logo-title">GreenBuy</span></a
+        >
+      </nav>
+
+      <a href="/signup" class="signup sign--btn">login</a>
+    </header>
+    <form action="" class="form form--signup" id="form--create">
+      <h1 class="form__title">create an account</h1>
+      <div class="form__name">
+        <input type="text" id="name" name="name" minlength="5" maxlength="20" required />
+        <label for="name">name</label>
+      </div>
+      <div class="form__email">
+        <input type="email" id="create-email" name="email" required />
+        <label for="email">email</label>
+      </div>
+      <div class="pass__container">
+        <div class="form__pass">
+          <input
+            type="password"
+            id="new-password"
+            name="password"
+            minlength="8"
+            maxlength="15"
+            required
+          />
+          <label for="password">password</label>
+          <img
+            src="icons/eye-off.svg"
+            alt="show password"
+            class="icons--mini auth-icon"
+            id="create-pass-icon"
+          />
+        </div>
+        <div class="form__pass">
+          <input
+            type="password"
+            id="repeat-password"
+            name="repeat-password"
+            minlength="8"
+            maxlength="15"
+            required
+          />
+          <label for="repeat-password">repeat password</label>
+          <img
+            src="icons/eye-off.svg"
+            alt="show password"
+            class="icons--mini auth-icon"
+            id="create-pass-icon"
+          />
+        </div>
+      </div>
+      <button class="form__btn">Signup</button>
+      <a href="login.html" class="sign-up">Already a user?</a>
+    </form>
+    <img src="icons/green-icon.svg" alt="icon" class="greenbuy-watermark" />
+  </body>
+</html>
