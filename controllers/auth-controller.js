@@ -1,8 +1,13 @@
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 const { promisify } = require("util");
 const User = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
 const ApiError = require("../utils/apiError");
+const filterBody = require("../utils/filter");
+const Email = require("../utils/email");
+
+const randomOTPGenerator = () => Math.floor(Math.random() * 1000000 + 100001);
 
 const signInToken = (id) =>
   jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -10,7 +15,7 @@ const signInToken = (id) =>
   });
 
 const createAndSendToken = (user, statusCode, res) => {
-  const token = signInToken(user.id);
+  const token = signInToken(user._id);
 
   const cookieOptions = {
     expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRESIN * 24 * 60 * 60 * 1000),
@@ -23,17 +28,37 @@ const createAndSendToken = (user, statusCode, res) => {
 
   return res.status(statusCode).json({
     status: "success",
-    token,
-    data: {
-      email: user.email,
-      message: "successfully signed!",
-    },
+    message: "successfully signed!",
   });
 };
 
+exports.otp = catchAsync(async (req, res) => {
+  const filteredData = filterBody(req.body, "name", "email");
+
+  const OTP = randomOTPGenerator();
+
+  const url = `${req.protocol}//:${req.get("host")}/`;
+
+  await new Email(filteredData, url, OTP).sendOTP();
+
+  res.status(200).json({
+    status: "success",
+    message: "OTP sent successfully!",
+    OTP,
+  });
+});
+
 exports.signup = catchAsync(async (req, res) => {
-  const { name, email, password, passwordConfirm } = req.body;
-  const user = await User.create({ name, email, password, passwordConfirm });
+  const filteredData = filterBody(
+    req.body,
+    "name",
+    "email",
+    "password",
+    "passwordConfirm",
+    "role",
+    "photo"
+  );
+  const user = await User.create(filteredData);
   createAndSendToken(user, 201, res);
 });
 
@@ -56,6 +81,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   let token = null;
 
   if (authorization && authorization.startsWith("Bearer")) token = authorization.split(" ")[1];
+  else if (req.cookies.jwt) token = req.cookies.jwt;
 
   if (!token) return next(new ApiError("Please login again!", 401));
 
@@ -70,15 +96,38 @@ exports.protect = catchAsync(async (req, res, next) => {
     return next(new ApiError("User recently changed password, Please login again!", 401));
 
   req.user = freshUser;
+  res.locals.user = freshUser;
 
   next();
 });
 
-exports.changePassword = catchAsync(async (req, res, next) => {
+exports.resetPassword = catchAsync(async (req, res, next) => {
+  // 1. get user based on the token.
+  const hashedToken = crypto.creaseHash("sha256").update(req.params.token).digest("hex");
+
+  const user = await User.findOne({
+    passwordResetToken: hashedToken,
+    passwordResetExpires: { $get: Date.now() },
+  });
+
+  // 2. se the new pass if token has not expired and user includes
+  if (!user) return next(new ApiError("Token is invalid, or alreasy expired!", 400));
+
+  user.password = req.body.password;
+  user.passwordConfirm = req.body.passwordConfirm;
+  user.passwordResetExpires = undefined;
+  user.passwordResetToken = undefined;
+
+  await user.save();
+
+  createAndSendToken(user, 200, res);
+});
+
+exports.updatePassword = catchAsync(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("+password");
 
   // check if password is correct
-  if (!(await user.correctPassword(req.body.passwordCurrent, user.password))) {
+  if (!(await user.validateUserPassword(req.body.passwordCurrent, user.password))) {
     return next(new ApiError("Invalid password, Please enter a valid password!"), 400);
   }
 
@@ -114,24 +163,20 @@ exports.isLoggedIn = catchAsync(async (req, res, next) => {
   next();
 });
 
-exports.updatePassword = catchAsync(async (req, res, next) => {
-  const user = await User.findById(req.user.id).select("+password");
-  // check if pass is correct
-  if (!(await user.correctPassword(req.body.passwordCurrent, user.password)))
-    return next(new ApiError("Invalid password, Please try again!", 404));
+exports.logoutUser = (req, res) => {
+  res.cookie("jwt", "logged-out", {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true,
+  });
 
-  // if correct update pass
-  user.password = req.body.password;
-  user.passwordConfirm = req.body.passwordConfirm;
-
-  await user.save();
-  // 4. log user in, send JWT
-  createAndSendToken(user, 200, res);
-});
+  res.status(200).json({ status: "success" });
+};
 
 exports.restrict =
   (...roles) =>
   (req, res, next) => {
     if (!roles.includes(req.user.role))
       return next(new ApiError("You do not have permission to perform this action!", 403));
+
+    next();
   };

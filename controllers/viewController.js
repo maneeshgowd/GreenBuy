@@ -1,4 +1,5 @@
-const Model = require("../models/productModel");
+const Products = require("../models/productModel");
+const Pots = require("../models/potsModel");
 // const ApiError = require("../utils/apiError");
 const catchAsync = require("../utils/catchAsync");
 
@@ -9,16 +10,23 @@ exports.overview = (req, res) => {
 };
 
 exports.getAllProducts = catchAsync(async (req, res, next) => {
-  const products = await Model.find();
-
+  const products = await Products.find();
   res.status(200).render("products", {
     title: "GreenBuy | Products",
     products,
   });
 });
 
+exports.getAllPots = catchAsync(async (req, res, next) => {
+  const pots = await Pots.find();
+  res.status(200).render("pots", {
+    title: "GreenBuy | Pots",
+    pots,
+  });
+});
+
 exports.getProduct = catchAsync(async (req, res, next) => {
-  const product = await Model.findOne({ slug: req.params.productID } || null);
+  const product = await Products.findOne({ slug: req.params.productID } || null);
   if (!product) return next();
 
   res.status(200).render("product", {
@@ -28,7 +36,7 @@ exports.getProduct = catchAsync(async (req, res, next) => {
 });
 
 exports.getWishlist = (req, res) => {
-  // const wishlist = await Model.find();
+  // const wishlist = await Products.find();
 
   res.status(200).render("wishlist", {
     title: "GreenBuy | Wishlist",
@@ -36,7 +44,7 @@ exports.getWishlist = (req, res) => {
 };
 
 exports.getCart = (req, res) => {
-  // const cart = await Model.find();
+  // const cart = await Products.find();
 
   res.status(200).render("cart", {
     title: "GreenBuy | Cart",

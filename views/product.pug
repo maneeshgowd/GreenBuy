@@ -14,14 +14,19 @@ block content
           a.links__ele(href='/pots') pots
           // <a href="#" class="links__ele">contact</a>
           a.links__ele(href='/products') plants
-        nav.user-nav
-          span#cart-items.cart-items
-          a(href='/cart')
-            img.nav--icons(src='/icons/cart.svg' alt='user cart')
-          a(href='/wishlist')
-            img.nav--icons(src='/icons/heart.svg' alt='wishlist')
-          a(href='/my-account')
-            img.nav--icons(src='/icons/user-avatar.svg' alt='user')
+
+        if user 
+          nav.user-nav
+            span#cart-items.cart-items
+            a(href='/cart')
+              img.nav--icons(src='/icons/cart.svg' alt='user cart' title='Shopping cart')
+            a(href='/wishlist')
+              img.nav--icons(src='/icons/heart.svg' alt='wishlist' title='Wishlist')
+            a(href='/my-account')
+              img.nav--icons(src='/icons/user-avatar.svg' alt='user' title='Profile')
+        else 
+          a.login__user.user__ele(href='/login') login 
+
         img#product-hamburger.hamburger.icons(src='/icons/hamburger-2.svg' alt='menu-bar')
       section.overview-content
         img.overview-content__image(src=`/img/${product.images[0]}` alt=`${product.plantName}`)
@@ -29,9 +34,9 @@ block content
           h1.overview-detail__title= product.plantName
           h2.overview-detail__cat= product.plantType
           h2.overview-detail__price= `₹${product.price}`
-          .overview-minmax
+          div#product-counter.overview-minmax
             button.items__feature__btn.btn--decrement &minus;
-            input.product-count(type='number' min='1' max='10')
+            input.product-count(type='number' min='1' max='10' value="1")
             button.items__feature__btn.btn--increment &plus;
           span &starf; Free delivery for all products above &#x20B9; 499
           button.checkout-btn.btn-cart Add to cart

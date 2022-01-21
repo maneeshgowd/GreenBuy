@@ -1,14 +1,11 @@
 /* eslint-disable */
 "use strict";
 
+import "regenerator-runtime";
+import "core-js/stable";
 import view from "./view";
-import "regenerator-runtime/runtime";
-import "core-js";
-// import leaf_1 from "url:../img/leaf-1.jpg";
-// import leaf_2 from "url:../img/leaf-2.jpg";
-// import leaf_3 from "url:../img/leaf-3.jpg";
-// import eye from "url:../icons/eye.svg";
-// import eyeOff from "url:../icons/eye-off.svg";
+import * as model from "./model";
+import errorDisplay from "./error";
 
 // VIEW LOGIC
 
@@ -60,21 +57,36 @@ const viewToolTipHandler = function (categoriesWindow) {
   }
 };
 
+// SEND: TO WISHLIST
+
 const viewWishlistHandler = function () {
   const classs = "wishlist-wishlist";
   !this.classList.contains(classs) ? this.classList.add(classs) : this.classList.remove(classs);
 };
 
+// SEND: TO CART
+
 const addToCart = function () {
-  const cartAnim = document.getElementById("cart-anim");
+  const cartAnim = this.closest("#product").querySelector("#cart-anim");
   cartAnim.classList.remove("hidden-helper");
   this.classList.add("cart--helper");
   setTimeout(() => cartAnim.classList.add("hidden-helper"), 1000);
+  this.setAttribute("disabled", true);
 };
 
 const viewProductHandler = function (e) {
-  if (e.target.id === "wishlist-icon") viewWishlistHandler.call(e.target);
-  if (e.target.id === "add-cart-btn") addToCart.call(e.target);
+  if (e.target.id === "wishlist-icon") {
+    viewWishlistHandler.call(e.target);
+  }
+
+  if (e.target.id === "add-cart-btn") {
+    addToCart.call(e.target);
+  }
+
+  if (e.target.id === "wishlist-icon" || e.target.id === "add-cart-btn") {
+    e.target.closest("#product").setAttribute("href", "#");
+  }
+  if (e.target.id === "product") e.target.setAttribute("href", e.target.dataset.attr);
 };
 
 const viewAuthLogin = function (e, inputArr) {
@@ -82,35 +94,89 @@ const viewAuthLogin = function (e, inputArr) {
   const [email, password] = inputArr;
 
   const validatedData = userAuthenticator(email.value.trim(), password.value.trim());
-  if (validatedData.includes(0)) return console.log("error");
+  if (validatedData.includes(0)) return;
 
   this.querySelector(".form__btn").textContent = "Please wait...";
+
+  const userData = {
+    email: validatedData[0],
+    password: validatedData[1],
+  };
+
+  model.userLogin(userData);
 };
 
 const viewPasswordVisibleHandler = function (loginPassword) {
   if (loginPassword.type === "password") {
     loginPassword.type = "text";
-    this.src = eye;
+    this.src = "/icons/eye.svg";
   } else {
     loginPassword.type = "password";
-    this.src = eyeOff;
+    this.src = "/icons/eye-off.svg";
   }
 };
 
-const viewAuthCreate = function (e, inputArr) {
+const viewProductCountHandler = function (e) {
+  const input = this.querySelector("input");
+  const val = +input.value;
+  if (e.target.classList.contains("btn--increment")) {
+    input.value = val >= 10 ? 10 : val + 1;
+  }
+  if (e.target.classList.contains("btn--decrement")) {
+    input.value = val <= 1 ? 1 : val - 1;
+  }
+};
+
+const viewAuthCreate = async function (e, inputArr) {
   e.preventDefault();
   const [name, email, password, repeatPassword] = inputArr;
 
   const validatedData = userAuthenticator(
     email.value.trim(),
     password.value.trim(),
-    repeatPassword.value.trim()
+    repeatPassword.value.trim(),
+    name.value.trim()
   );
-
-  if (validatedData.includes(0)) return console.log("error");
+  if (validatedData.includes(0)) return errorDisplay("Passwords dosen't match");
 
   this.querySelector(".form__btn").textContent = "Please wait...";
+
+  const userData = {
+    name: validatedData[1],
+    email: validatedData[0],
+    password: validatedData[2],
+    passwordConfirm: validatedData[2],
+  };
+
+  const otp = await model.userSignup(userData, "validate");
+
+  if (otp.status !== "success") return errorDisplay(otp.message, "error");
+
+  sessionStorage.setItem("OTP", otp.OTP);
+  sessionStorage.setItem("data", JSON.stringify(userData));
+
+  this.classList.add("hidden-helper");
+
+  this.nextElementSibling.classList.remove("hidden-helper");
 };
+
+function viewLogoutHandler() {
+  model.logoutUser();
+}
+
+function validateOTP(e) {
+  e.preventDefault();
+
+  const OTP = sessionStorage.getItem("OTP");
+  const data = JSON.parse(sessionStorage.getItem("data"));
+  const otpValue = this.querySelector("#otp").value.trim();
+
+  if (otpValue !== OTP) return errorDisplay("Invalid OTP!", "error");
+
+  errorDisplay("Successfully signed.", "success");
+  // send data to backend
+  model.userSignup(data, "signup");
+}
 
 const viewUserSettingsToggleHandler = function (e, buttons, sections) {
   const [passwordInfo, personelInfo, myOrders, closeInfo] = sections;
@@ -127,15 +193,15 @@ const viewUserSettingsToggleHandler = function (e, buttons, sections) {
   if (e.target.id === "close-account") closeInfo.classList.remove("hidden-helper");
 };
 
-//TODO function errorHandler() {}
-
-function userAuthenticator(email, password, repeatPassword) {
+function userAuthenticator(email, password, repeatPassword, name) {
   const userData = [];
 
   const validate =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
   validate.test(email) ? userData.push(email) : userData.push(0);
+
+  if (name) name.length < 5 ? userData.push(0) : userData.push(name);
 
   if (repeatPassword) {
     password.length >= 8 && password === repeatPassword
@@ -152,28 +218,17 @@ function userAuthenticator(email, password, repeatPassword) {
 const IFEE = function () {
   view.menuToggleHandler(viewMenuHandler, viewHideMenuHandler);
   view.toolTipHandler(viewToolTipHandler);
+  view.addLogoutHandler(viewLogoutHandler);
   // view.mainAnimationHandler(viewMainAnimHandler);
   view.passwordVisibleHandler(viewPasswordVisibleHandler);
-  view.authenticateHandler(viewAuthCreate, viewAuthLogin);
+  view.authenticateHandler(viewAuthCreate, viewAuthLogin, validateOTP);
   view.addProductHandler(viewProductHandler);
+  view.addProductCounter(viewProductCountHandler);
   view.addUserSettingToggler(viewUserSettingsToggleHandler);
 };
 
 IFEE();
 
-// const observerObj = {
-//   root: null,
-//   threshold: 0,
-//   rootMargin: "-90px",
-// };
 
-// const callbackObserver = function (entries, intersection) {
-//   const header = document.getElementById("index-header");
-//   const [entry] = entries;
-//   if (!entry.isIntersecting) header.classList.add("sticky-nav");
-//   else header.classList.remove("sticky-nav");
-// };
 
-// const intersection = new IntersectionObserver(callbackObserver, observerObj);
-// const section = document.getElementById("top");
-// intersection.observe(section);
+// TODO : 1. filter, 2. Wishlist , 3. Cart, 4. Animation, 4. user-edit 5. resetpassword 6. image compress

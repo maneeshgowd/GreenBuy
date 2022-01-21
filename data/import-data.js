@@ -5,15 +5,19 @@ dotenv.config({ path: `${__dirname}/../config.env` });
 
 const mongoose = require("mongoose");
 const productModel = require("../models/productModel");
+const potsModel = require("../models/potsModel");
 
 const DB = process.env.DATABASE.replace("<password>", process.env.DATABASE_PASSWORD);
 mongoose.connect(DB);
 
 const products = JSON.parse(fs.readFileSync(`${__dirname}/plants.json`));
+const pots = JSON.parse(fs.readFileSync(`${__dirname}/pots.json`));
 
 const importData = async function () {
   try {
     await productModel.create(products, { validateBeforeSave: true });
+    await potsModel.create(pots, { validateBeforeSave: true });
+
     console.log("Data uploaded successfully!");
   } catch (err) {
     console.log(err);

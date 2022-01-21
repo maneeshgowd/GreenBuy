@@ -131,3 +131,15 @@ input:invalid + label {
   pointer-events: none;
   transition: all 200ms ease;
 }
+
+.form--otp {
+  .otp {
+    letter-spacing: 0.5rem;
+    font-size: 1.125rem;
+  }
+
+  .otp-text {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+}

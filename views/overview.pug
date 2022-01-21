@@ -26,13 +26,14 @@ block content
             a(href='#exclusive-products') pots and plants
           div
             h2.tooltip-title Products
-            a(href='#') Air purifiers
-            a(href='#') Medicinal plants
-            a(href='#') Easy to care
-            a(href='#') Flowering plants
-        if user
-          a#user-login.nav__ele.user__ele(href='#')
-            img.icons(src='/icons/user-avatar.svg' alt='user')
+            a(href='/products') Air purifiers
+            a(href='/products') Medicinal plants
+            a(href='/products') Easy to care
+            a(href='/products') Flowering plants
+        if user 
+          a#user-login.nav__ele.user__ele(href='/my-account')
+            span= user.name.split(" ")[0]
+            img.icons(src='/icons/user-avatar.svg' alt=`${user.name}`)
         else
           nav.nav
             a.nav__ele.icons--icon(href='/login')
@@ -87,7 +88,7 @@ block content
         #exclusive-products.exclusive-product
           .product-content
             h1.product-content__title Exclusive pots and plants
-            a.product-content__btn(href='/products') see all
+            a.product-content__btn(href='/pots') see all
           .exclusive-plants
             figure.exclusive-plant
               a(href='/pots')
@@ -124,12 +125,17 @@ block content
             img.header__logo.icons(src='/icons/icon.svg' alt='GreenBuy logo')
             span GreenBuy
         nav.nav
-          a.nav__ele(href='/plants') plants
+          a.nav__ele(href='/products') plants
           a.nav__ele(href='/pots') pots
           a.nav__ele(href='/') contact
-        nav.nav
-          a.nav__ele(href='/login') login
-          a.nav__ele(href='/signup') signup
+        if !user
+          nav.nav
+            a.nav__ele(href='/login') login
+            a.nav__ele(href='/signup') signup
+        else 
+          nav.nav
+            a.nav__ele(href="/") Welcome user!
+
         nav.social-links
           a(href='#top')
             img.icons--mini(src='/icons/instagram.svg' alt='instagram' title='instagram')
@@ -141,10 +147,10 @@ block content
         span.copyright &copy; Copyright. All rights reserved
   #product-menu.menu.hidden-helper
     img#cancel-hamburger.menu__cancel.icons(src='icons/cancel.svg' alt='close')
-    a.menu-link(href='#')
+    a.menu-link(href='/')
       img.icons--mini(src='icons/home.svg' alt='home')
       span Home
-    a.menu-link(href='#')
+    a.menu-link(href='/pots')
       img.icons--mini(src='icons/pot.svg' alt='pot')
       span Pots
     //
@@ -153,14 +159,21 @@ block content
       <span>Contact</span>
       </a>
     .menu-categories
-      h2 Categories &amp;blacktriangledown;
-      a.menu-link(href='#popular-products') popular products
-      a.menu-link(href='#exclusive-products') pots and plants
-      a.menu-link(href='#') Air purifiers
-      a.menu-link(href='#') Medicinal plants
-      a.menu-link(href='#') Easy to care
-      a.menu-link(href='#') Flowering plants
-    .auth
-      a.menu-link(href='/login') login
-      a.menu-link(href='/signup') Signup
+      h2 Categories &blacktriangledown;
+      a.menu-link(href='/products') Air purifiers
+      a.menu-link(href='/products') Medicinal plants
+      a.menu-link(href='/products') Easy to care
+      a.menu-link(href='/products') Flowering plants
+    if user 
+      a.menu-link.user__user(href='/my-account')
+        img.icons--mini(src='/icons/user-avatar.svg' alt=`${user.name}`)
+        span My Account
+      a#logout-user.menu-link.user__user(href='#')
+        img.icons--mini(src='/icons/logout.svg' alt=`logout`)
+        span Logout
+    else
+      .auth
+        a.menu-link(href='/login') login
+        a.menu-link(href='/signup') Signup      
+
 

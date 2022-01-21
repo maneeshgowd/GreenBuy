@@ -34,6 +34,7 @@ const schema = new mongoose.Schema({
     required: [true, "A user must have a password!"],
     minlength: [8, "A password must be atleast 8 characters long!"],
     maxlength: [15, "A password cannot exceed more than 15 characters!"],
+    select: false,
   },
 
   passwordConfirm: {
@@ -57,13 +58,11 @@ const schema = new mongoose.Schema({
     type: String,
     enum: ["admin", "user", "seller"],
     default: "user",
-    select: false,
   },
 
   photo: {
     type: String,
     default: "default.jpg",
-    select: false,
   },
 
   passwordChangedAt: {
@@ -73,6 +72,25 @@ const schema = new mongoose.Schema({
 
   passwordResetToken: String,
   passwordResetExpires: Date,
+
+  country: {
+    type: String,
+    trim: true,
+    default: "India",
+  },
+
+  postcode: {
+    type: Number,
+    trim: true,
+    default: 560010,
+  },
+
+  address: {
+    type: String,
+    minlength: [15, "An address must be atleast 15 characters long!"],
+    trim: true,
+    default: "Example: #01, Your address, address lane, city state country - postcode",
+  },
 
   active: {
     type: Boolean,
@@ -85,6 +103,14 @@ schema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 12);
   this.passwordConfirm = undefined;
+  next();
+});
+
+schema.pre("save", function (next) {
+  // if the password is ! modified or if the doc is new
+  if (!this.isModified("password") || this.isNew) return next();
+  // sometimes token will be created before the passwordChangedAt  has been created so we need to fix this by subtratic 1s
+  this.passwordChangedAt = Date.now() - 1000;
   next();
 });
 

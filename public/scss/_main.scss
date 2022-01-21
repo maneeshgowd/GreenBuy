@@ -210,13 +210,20 @@
   display: none;
 
   @include style.tablet {
-    display: block;
+    @include style.flex();
+    gap: 1rem;
     margin-left: auto;
   }
 
   @include style.desktop {
     margin-left: 0;
   }
+}
+
+.user__user {
+  @include style.flex(flex-start);
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .content {
@@ -322,4 +329,29 @@
   top: 0;
   z-index: 1;
   background-color: style.color(accent-clr);
+}
+
+.error-msg {
+  padding: 1rem;
+  border-radius: style.$radius;
+  font-weight: style.font(medium);
+  font-size: clamp(0.9rem, 5vw, 1rem);
+  position: absolute;
+  top: 5rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  max-width: 30ch;
+  background-color: style.color(white-clr);
+  filter: drop-shadow(0 20px 20px rgba(style.color(accent-dark), 0.1));
+}
+
+.error {
+  color: style.color(invalid);
+  border: 2px solid style.color(invalid);
+}
+
+.success {
+  color: style.color(accent-clr);
+  border: 2px solid style.color(accent-clr);
 }

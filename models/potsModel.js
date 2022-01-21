@@ -6,7 +6,7 @@ const Schema = new mongoose.Schema({
     unique: true,
     trim: true,
     minlength: [5, "A pot name should be atleast 5 characters long!"],
-    required: [true, "A pot should have a valid name!"],
+    required: [true, "A pot should have a name!"],
   },
 
   images: [String],
@@ -28,6 +28,6 @@ const Schema = new mongoose.Schema({
   },
 });
 
-const model = mongoose.Model("Pots", Schema);
+const model = mongoose.model("Pots", Schema);
 
 module.exports = model;

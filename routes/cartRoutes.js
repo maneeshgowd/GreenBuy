@@ -2,10 +2,10 @@ const router = require("express").Router();
 const authController = require("../controllers/auth-controller");
 const cartController = require("../controllers/cartController");
 
-router.route("/").get(cartController.getAllCartItems);
 
 router.use(authController.protect);
 
+router.route("/").get(cartController.getAllCartItems);
 router.post("/", cartController.createCartItem);
 
 router

@@ -113,7 +113,7 @@
   &__title {
     font-weight: style.font(bold);
     font-size: 1.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
 }
 
@@ -131,7 +131,7 @@
 .filter__cat {
   @include style.flex(center, flex-start);
   flex-direction: column;
-  gap: 2em;
+  gap: 1.5em;
 
   &__title {
     font-size: 1.125rem;
@@ -151,7 +151,7 @@
 }
 
 .filter__price {
-  margin-top: 3em;
+  margin-top: 2.5rem;
   @include style.flex(center, flex-start);
   flex-direction: column;
   gap: 2em;
@@ -172,7 +172,7 @@
 }
 
 .set__cat {
-  margin-top: 2em;
+  margin-top: 2rem;
   @include style.buttonStyle(style.color(accent-clr), style.color(white-clr), 0.7rem, 5rem);
   @include style.buttonAnim();
   @include style.tablet {
@@ -181,7 +181,7 @@
 }
 
 .filter__rating {
-  margin-top: 3em;
+  margin-top: 2.5rem;
 
   &__title {
     font-size: 1.125rem;
@@ -250,13 +250,13 @@
     margin-right: 2em;
     @include style.font(style.color(typo-clr), 1.125rem, style.font(semi-bold));
   }
+}
 
-  &__btn {
-    @include style.buttonAnim();
-    @include style.buttonStyle(style.color(accent-clr), style.color(white-clr), 0.7rem, 1rem);
-    font-size: 0.9rem;
-    font-weight: style.font(regular);
-  }
+.sort__btn {
+  @include style.buttonAnim();
+  @include style.buttonStyle(style.color(accent-clr), style.color(white-clr), 0.7rem, 1rem);
+  font-size: 0.9rem;
+  font-weight: style.font(regular);
 }
 
 .product-container {
@@ -288,11 +288,13 @@
       width: 100%;
       height: 14em;
       border-radius: style.$radius;
+      pointer-events: none;
     }
 
     & .product-name {
       margin: 1rem 0;
       text-transform: capitalize;
+      pointer-events: none;
       @include style.font(style.color(typo-clr), clamp(1rem, 5vw, 1.125rem), style.font(bold));
     }
 
@@ -300,9 +302,11 @@
       width: 100%;
       @include style.flex(flex-start);
       gap: 0.2em;
+      pointer-events: none;
 
       & .rating-title {
         font-size: 0.9rem;
+        pointer-events: none;
         @include style.font(style.color(typo-clr), 0.9rem, style.font(bold));
       }
     }
@@ -312,6 +316,7 @@
       margin-top: 1rem;
       min-height: 2.5em;
       @include style.flex(space-between);
+      pointer-events: none;
 
       & .price {
         align-self: flex-end;
@@ -334,6 +339,7 @@
         @include style.buttonStyle(transparent, style.color(typo-clr), 0.6em, 1em);
         font-size: 0.9rem;
         font-weight: style.font(semi-bold);
+        pointer-events: visible !important;
 
         &:hover,
         &:focus {
@@ -370,8 +376,11 @@
 }
 
 .cart--helper {
-  pointer-events: none;
   border: 0 !important;
   color: style.color(white-clr) !important;
   background-color: style.color(accent-dark) !important;
+}
+
+.login__user {
+  @extend .sort__btn;
 }

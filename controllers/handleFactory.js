@@ -7,9 +7,10 @@ exports.getOne = (Model) =>
   catchAsync(async (req, res, next) => {
     let tempProduct = null;
 
-    if (!req.params.productID.includes("-"))
-      tempProduct = Model.findById(req.params.productID || null);
-    else tempProduct = Model.findOne({ slug: req.params.productID } || null);
+    const id = req.params.productID || req.params.userID;
+
+    if (!id.includes("-")) tempProduct = Model.findById(id || null);
+    else tempProduct = Model.findOne({ slug: id } || null);
 
     const data = await tempProduct;
 
@@ -51,10 +52,14 @@ exports.updateOne = (Model) =>
     if (Object.entries(filteredData).length === 0)
       return next(new ApiError("Please provide valid fields to update!", 400));
 
-    const data = await Model.findByIdAndUpdate(req.params.productID, filteredData, {
-      runValidators: true,
-      new: true,
-    });
+    const data = await Model.findByIdAndUpdate(
+      req.params.productID || req.params.userID,
+      filteredData,
+      {
+        runValidators: true,
+        new: true,
+      }
+    );
 
     if (!data) return next(new ApiError("No product find with the given id!", 404));
 
@@ -68,7 +73,7 @@ exports.updateOne = (Model) =>
 
 exports.deleteOne = (Model) =>
   catchAsync(async (req, res, next) => {
-    const data = await Model.findByIdAndDelete(req.params.productID);
+    const data = await Model.findByIdAndDelete(req.params.productID || req.params.userID);
 
     if (!data) return next(new ApiError("No product find with the given id!", 404));
 
@@ -87,6 +92,7 @@ exports.createOne = (Model, type = "no-filter") =>
       filteredData = filteredBody(
         req.body,
         "plantName",
+        "potName",
         "images",
         "about",
         "price",

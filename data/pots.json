@@ -1,0 +1,74 @@
+[
+  {
+    "potName": "Designed clay pot",
+    "images": ["pot-1.jpg"],
+    "ratings": "4.5",
+    "price": "279"
+  },
+  {
+    "potName": "Mini clay pot",
+    "images": ["pot-2.jpg"],
+    "ratings": "3.2",
+    "price": "279"
+  },
+  {
+    "potName": "Premium ceramic pot",
+    "images": ["pot-3.jpg"],
+    "ratings": "3.3",
+    "price": "299"
+  },
+  {
+    "potName": "Ceramic square pot",
+    "images": ["pot-4.jpg"],
+    "ratings": "4.4",
+    "price": "299"
+  },
+  {
+    "potName": "Gray stone pot",
+    "images": ["pot-5.jpg"],
+    "ratings": "3.1",
+    "price": "179"
+  },
+  {
+    "potName": "Wodden square pot",
+    "images": ["pot-6.jpg"],
+    "ratings": "4.0",
+    "price": "319"
+  },
+  {
+    "potName": "Ceramic and clay pot",
+    "images": ["pot-7.jpg"],
+    "ratings": "4.1",
+    "price": "259"
+  },
+  {
+    "potName": "Premium clay ceramic pot",
+    "images": ["pot-8.jpg"],
+    "ratings": "4.8",
+    "price": "299"
+  },
+  {
+    "potName": "Premium designed clay pot",
+    "images": ["pot-9.jpg"],
+    "ratings": "4.7",
+    "price": "199"
+  },
+  {
+    "potName": "Natural pot",
+    "images": ["pot-10.jpg"],
+    "ratings": "3.8",
+    "price": "199"
+  },
+  {
+    "potName": "Premium polished ceramic",
+    "images": ["pot-11.jpg"],
+    "ratings": "3.9",
+    "price": "259"
+  },
+  {
+    "potName": "Polished clay pot",
+    "images": ["pot-12.jpg"],
+    "ratings": "3.4",
+    "price": "279"
+  }
+]

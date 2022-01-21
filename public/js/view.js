@@ -12,7 +12,7 @@ class View {
   /////
   _categoriesBtn = document.getElementById("categories-btn");
   _categoriesTooltip = document.getElementById("categories-tooltip");
-  _product = document.getElementById("product");
+  _productContainer = document.getElementById("product-container");
   /////
   _loginPassword = document.getElementById("password");
   _loginIcon = document.getElementById("login-pass-icon");
@@ -25,8 +25,13 @@ class View {
   _createEmail = document.getElementById("create-email");
   _createIcon = document.querySelectorAll("#create-pass-icon");
   _signUp = document.getElementById("form--create");
+  _validateOtp = document.getElementById("form--otp");
   /////
   _userInformation = document.getElementById("user-information");
+  /////
+  _productCounter = document.getElementById("product-counter");
+  /////
+  _logoutUser = document.querySelectorAll("#logout-user");
 
   // mainAnimationHandler(handler) {
   //   handler(this._main || null, this._mainTitle);
@@ -62,7 +67,7 @@ class View {
     );
   }
 
-  authenticateHandler(signUpHandler, loginHandler) {
+  authenticateHandler(signUpHandler, loginHandler, validateOtpHandler) {
     const inputCreate = [
       this._createName,
       this._createEmail,
@@ -79,10 +84,20 @@ class View {
     this._loginIn?.addEventListener("submit", function (e) {
       loginHandler.call(this, e, inputLogin);
     });
+
+    this._validateOtp?.addEventListener("submit", validateOtpHandler);
   }
 
   addProductHandler(handler) {
-    this._product?.addEventListener("click", handler);
+    this._productContainer?.addEventListener("click", handler);
+  }
+
+  addProductCounter(handler) {
+    this._productCounter?.addEventListener("click", handler);
+  }
+
+  addLogoutHandler(handler) {
+    this._logoutUser?.forEach((ele) => ele.addEventListener("click", handler));
   }
 
   addUserSettingToggler(handler) {
@@ -95,7 +110,7 @@ class View {
     const myOrders = document.getElementById("my-orders");
     const closeInfo = document.getElementById("close-info");
 
-    this._userInformation.addEventListener("click", (e) => {
+    this._userInformation?.addEventListener("click", (e) => {
       handler.call(
         this,
         e,

@@ -4,15 +4,25 @@ const productController = require("../controllers/productController");
 
 router.route("/").get(productController.getAllProducts);
 
-router.use(authController.protect);
-
-router.post("/", productController.createOneProduct);
+router.post(
+  "/",
+  authController.protect,
+  authController.restrict("admin", "seller"),
+  productController.createOneProduct
+);
 
 router
   .route("/:productID")
   .get(productController.getOneProduct)
-  .patch(productController.updateOneProduct)
-  .delete(productController.deleteOneProduct);
-
+  .patch(
+    authController.protect,
+    authController.restrict("admin", "seller"),
+    productController.updateOneProduct
+  )
+  .delete(
+    authController.protect,
+    authController.restrict("admin", "seller"),
+    productController.deleteOneProduct
+  );
 
 module.exports = router;

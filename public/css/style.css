@@ -293,7 +293,10 @@ img {
 }
 @media only screen and (min-width: 700px) {
   .user__ele {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
     margin-left: auto;
   }
 }
@@ -301,6 +304,14 @@ img {
   .user__ele {
     margin-left: 0;
   }
+}
+
+.user__user {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .content {
@@ -436,6 +447,31 @@ img {
   top: 0;
   z-index: 1;
   background-color: #176c36;
+}
+
+.error-msg {
+  padding: 1rem;
+  border-radius: 0.2em;
+  font-weight: 500;
+  font-size: clamp(0.9rem, 5vw, 1rem);
+  position: absolute;
+  top: 5rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  max-width: 30ch;
+  background-color: #fff;
+  filter: drop-shadow(0 20px 20px rgba(6, 55, 32, 0.1));
+}
+
+.error {
+  color: #e40d43e1;
+  border: 2px solid #e40d43e1;
+}
+
+.success {
+  color: #176c36;
+  border: 2px solid #176c36;
 }
 
 .products {
@@ -947,6 +983,15 @@ input:invalid + label {
   transition: all 200ms ease;
 }
 
+.form--otp .otp {
+  letter-spacing: 0.5rem;
+  font-size: 1.125rem;
+}
+.form--otp .otp-text {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
 .product-product {
   padding: 0 1em;
   position: relative;
@@ -1106,7 +1151,7 @@ input:invalid + label {
 .filter__title {
   font-weight: 700;
   font-size: 1.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 .filter-cancel {
@@ -1126,7 +1171,7 @@ input:invalid + label {
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  gap: 2em;
+  gap: 1.5em;
 }
 .filter__cat__title {
   font-size: 1.125rem;
@@ -1143,7 +1188,7 @@ input:invalid + label {
 }
 
 .filter__price {
-  margin-top: 3em;
+  margin-top: 2.5rem;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -1171,7 +1216,7 @@ input:invalid + label {
 }
 
 .set__cat {
-  margin-top: 2em;
+  margin-top: 2rem;
   padding: 0.7rem 5rem;
   background-color: #176c36;
   border-radius: 0.2em;
@@ -1204,7 +1249,7 @@ input:invalid + label {
 }
 
 .filter__rating {
-  margin-top: 3em;
+  margin-top: 2.5rem;
 }
 .filter__rating__title {
   font-size: 1.125rem;
@@ -1271,7 +1316,8 @@ input:invalid + label {
   color: #4a4a4a;
   font-weight: 600;
 }
-.sort__btn {
+
+.sort__btn, .login__user {
   position: relative;
   padding: 0.7rem 1rem;
   background-color: #176c36;
@@ -1285,7 +1331,7 @@ input:invalid + label {
   font-size: 0.9rem;
   font-weight: 400;
 }
-.sort__btn::before {
+.sort__btn::before, .login__user::before {
   position: absolute;
   content: "";
   inset: 0;
@@ -1295,7 +1341,7 @@ input:invalid + label {
   transform: scaleX(0);
   transform-origin: left;
 }
-.sort__btn:hover::before, .sort__btn:focus::before {
+.sort__btn:hover::before, .login__user:hover::before, .sort__btn:focus::before, .login__user:focus::before {
   transform: scaleX(1);
   transition: all 300ms ease;
 }
@@ -1329,10 +1375,12 @@ input:invalid + label {
   width: 100%;
   height: 14em;
   border-radius: 0.2em;
+  pointer-events: none;
 }
 .product-container .product--prod .product-name {
   margin: 1rem 0;
   text-transform: capitalize;
+  pointer-events: none;
   font-size: clamp(1rem, 5vw, 1.125rem);
   color: #4a4a4a;
   font-weight: 700;
@@ -1343,9 +1391,11 @@ input:invalid + label {
   justify-content: flex-start;
   align-items: center;
   gap: 0.2em;
+  pointer-events: none;
 }
 .product-container .product--prod .product-rating .rating-title {
   font-size: 0.9rem;
+  pointer-events: none;
   font-size: 0.9rem;
   color: #4a4a4a;
   font-weight: 700;
@@ -1357,6 +1407,7 @@ input:invalid + label {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  pointer-events: none;
 }
 .product-container .product--prod .product-price .price {
   align-self: flex-end;
@@ -1387,6 +1438,7 @@ input:invalid + label {
   z-index: 2;
   font-size: 0.9rem;
   font-weight: 600;
+  pointer-events: visible !important;
 }
 .product-container .product--prod .product-price .add-cart::before {
   position: absolute;
@@ -1434,7 +1486,6 @@ input:invalid + label {
 }
 
 .cart--helper {
-  pointer-events: none;
   border: 0 !important;
   color: #fff !important;
   background-color: #063720 !important;

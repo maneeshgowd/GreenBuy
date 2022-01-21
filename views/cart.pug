@@ -15,12 +15,12 @@ block content
           a.links__ele(href='/products') products
         nav.user-nav
           span#cart-items.cart-items
-          a(href='/cart')
-            img.nav--icons(src='/icons/cart.svg' alt='user cart')
           a(href='/wishlist')
-            img.nav--icons(src='/icons/heart.svg' alt='wishlist')
+            img.nav--icons(src='/icons/heart.svg' title="Wishlist" alt='wishlist')
           a(href='/my-account')
-            img.nav--icons(src='/icons/user-avatar.svg' alt='user')
+            img.nav--icons(src='/icons/user-avatar.svg' title="Profile" alt='user')
+          a#logout-user(href='#')
+            img.nav--icons(src='/icons/logout.svg' title="Logout" alt='logout')
         img#product-hamburger.hamburger.icons(src='/icons/hamburger-2.svg' alt='menu-bar')
       section.purchased
         .purchased-items
@@ -59,9 +59,9 @@ block content
               h3.items__cat Air purifier
               h2.items__price &#x20B9; 299
             .items__feature
-              div
+              div#product-counter.overview-minmax
                 button.items__feature__btn.btn--decrement &minus;
-                input.product-count(type='number' min='1' max='10')
+                input.product-count(type='number' min='1' max='10' value="1")
                 button.items__feature__btn.btn--increment &plus;
               .purchase-icons
                 img.purchase-icon(src='/icons/heart.svg' alt='wishlist' title='Wishlist')
