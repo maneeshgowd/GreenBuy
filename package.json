@@ -4,7 +4,8 @@
   "description": "Ecommerce website",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon NodeProj/server.js",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon NodeProj/server.js",
     "scss": "sass --watch public/scss:public/css",
     "js": "parcel watch public/js/controller.js --out-dir public/bundledJS",
