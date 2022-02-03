@@ -1,26 +1,56 @@
 const express = require("express");
 const path = require("path");
+
+const helmet = require("helmet");
+const mongoSanitize = require("express-mongo-sanitize");
+const xss = require("xss-clean");
+const rateLimit = require("express-rate-limit");
 const morgan = require("morgan");
-const cookieParser = require('cookie-parser');
-const ApiError = require("./utils/apiError");
+const cookieParser = require("cookie-parser");
+
+// const ApiError = require("./utils/apiError");
 const userRoute = require("./routes/userRoutes");
 const productRoute = require("./routes/productRoutes");
 const viewRoute = require("./routes/viewRoutes");
 const wishlistRoute = require("./routes/wishlistRoutes");
 const cartRoute = require("./routes/cartRoutes");
 const potRoute = require("./routes/potsRoutes");
+const bookingRoute = require("./routes/bookingRoutes");
 const errorController = require("./controllers/errorController");
 
 const app = express();
 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
-app.use(express.json());
-app.use(cookieParser());
 
+// serving static files
 app.use(express.static(path.join(__dirname, "public")));
 
+// set security HTPP headers
+app.use(helmet());
+
+// body parser
+app.use(express.json({ limit: "10kb" }));
+app.use(express.urlencoded({ extended: true, limit: "10kb" }));
+app.use(cookieParser());
+
+// Data sanitization against NoSql query injecitgon
+app.use(mongoSanitize());
+
+// data sanitization against xss
+app.use(xss());
+
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
+
+// limit requests from same API
+
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: "Too many requests from this IP, please try again in an hour!",
+});
+
+app.use("/api", limiter);
 
 app.use("/", viewRoute);
 app.use("/api/v1/users", userRoute);
@@ -28,9 +58,11 @@ app.use("/api/v1/products", productRoute);
 app.use("/api/v1/cart", cartRoute);
 app.use("/api/v1/wishlist", wishlistRoute);
 app.use("/api/v1/pots", potRoute);
+app.use("/api/v1/bookings", bookingRoute);
 
 app.all("*", (req, res, next) => {
-  next(new ApiError(`Can't find ${req.originalUrl} on this server!`, 404));
+  // next(new ApiError(`Can't find ${req.originalUrl} on this server!`, 404));
+  res.status(404).render("invalid");
 });
 
 app.use(errorController);

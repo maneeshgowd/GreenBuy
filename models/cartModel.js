@@ -1,30 +1,45 @@
 const mongoose = require("mongoose");
 
 const Schema = new mongoose.Schema({
-  products: [
+  product: [
     {
       type: mongoose.Schema.ObjectId,
+      required: [true, "A cart must have a product!"],
       ref: "products",
     },
   ],
+
+  pot: [
+    {
+      type: mongoose.Schema.ObjectId,
+      required: [true, "A cart must have a product!"],
+      ref: "Pots",
+    },
+  ],
+
   user: {
     type: mongoose.Schema.ObjectId,
+    required: [true, "A cart must have a user!"],
     ref: "Users",
-    required: [true, "A Cart must belong to a user!"],
   },
 });
 
 Schema.pre(/^find/, function (next) {
   this.populate({
-    path: "user",
-    select: "_id",
-  }).populate({
-    path: "products",
-    select: "plantName plantType price",
-  });
+    path: "product",
+    select: "plantName plantType price images",
+  })
+    .populate({
+      path: "pot",
+      select: "potName price images ratings",
+    })
+    .populate({
+      path: "user",
+      select: "_id",
+    });
   next();
 });
 
-const Model = mongoose.model("Cart", Schema);
+const Model = mongoose.model("usercart", Schema);
 
 module.exports = Model;

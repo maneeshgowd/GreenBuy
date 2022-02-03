@@ -12,6 +12,7 @@ router.route("/pots").get(authController.isLoggedIn, viewController.getAllPots);
 router.route("/cart").get(authController.protect, viewController.getCart);
 router.route("/wishlist").get(authController.protect, viewController.getWishlist);
 router.route("/my-account").get(authController.protect, viewController.user);
+router.route("/my-bookings").get(authController.protect, viewController.getAllBookings);
 
 router.get("/:productID", authController.isLoggedIn, viewController.getProduct);
 

@@ -44,6 +44,8 @@ const handleDuplicateField = (err) => {
 const errorForProd = function (err, req, res) {
   if (req.originalUrl.startsWith("/api")) {
     if (err.isOperational) {
+      if (err.message.includes("Please login again!"))
+      return res.redirect(`${req.protocol}://${req.get("host")}/login`);
       return res.status(err.statusCode).json({
         status: err.status,
         message: err.message,
@@ -59,6 +61,9 @@ const errorForProd = function (err, req, res) {
   }
 
   if (err.isOperational) {
+ 
+    if (err.message.includes("Please login again!"))
+      return res.redirect(`${req.protocol}://${req.get("host")}/login`);
     return res.status(err.statusCode).json({
       title: "Something went wrong!",
       message: err.message,

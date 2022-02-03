@@ -1,7 +1,10 @@
 const Products = require("../models/productModel");
 const Pots = require("../models/potsModel");
+const Cart = require("../models/cartModel");
+const Wishlist = require("../models/wishlistModel");
 // const ApiError = require("../utils/apiError");
 const catchAsync = require("../utils/catchAsync");
+const Booking = require("../models/bookingModel");
 
 exports.overview = (req, res) => {
   res.status(200).render("overview", {
@@ -35,21 +38,21 @@ exports.getProduct = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getWishlist = (req, res) => {
-  // const wishlist = await Products.find();
-
+exports.getWishlist = catchAsync(async (req, res) => {
+  const wishlist = await Wishlist.find({ user: req.user._id });
   res.status(200).render("wishlist", {
     title: "GreenBuy | Wishlist",
+    wishlist,
   });
-};
+});
 
-exports.getCart = (req, res) => {
-  // const cart = await Products.find();
-
+exports.getCart = catchAsync(async (req, res) => {
+  const cart = await Cart.find({ user: req.user._id });
   res.status(200).render("cart", {
     title: "GreenBuy | Cart",
+    cart,
   });
-};
+});
 
 exports.login = catchAsync(async (req, res, next) => {
   res.status(200).render("login", {
@@ -66,5 +69,13 @@ exports.signup = catchAsync(async (req, res, next) => {
 exports.user = catchAsync(async (req, res, next) => {
   res.status(200).render("user", {
     title: "GreenBuy | User",
+  });
+});
+
+exports.getAllBookings = catchAsync(async (req, res, next) => {
+  const bookings = await Booking.find({ user: req.user._id });
+  res.status(200).json({
+    status: "success",
+    data: { bookings },
   });
 });

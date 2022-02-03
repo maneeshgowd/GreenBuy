@@ -15,10 +15,10 @@
                 img.icons--mini(src='/icons/heart-2.svg' alt='wishlist')
                 span My favourites
             a.menu-link(href='/my-account')
-                img.icons--mini(src='/icons/user-avatar.svg' alt='user')
+                img.icons--mini.user--img(src=`/img/users/${user.photo}` alt=`${user.name}`)
                 span My account
             a#logout-user.menu-link(href='#')
-                img.icons--mini(src='/icons/logout.svg' alt='logout')
+                img.icons--mini(src='/icons/logout-2.svg' alt='logout')
                 span Logout
     else 
         a.menu-link(href='/login')

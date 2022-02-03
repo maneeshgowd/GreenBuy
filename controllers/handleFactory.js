@@ -83,22 +83,18 @@ exports.deleteOne = (Model) =>
     });
   });
 
-exports.createOne = (Model, type = "no-filter") =>
+exports.createOne = (Model) =>
   catchAsync(async (req, res, next) => {
-    let filteredData = null;
-    if (type === "cart" || type === "wishlist")
-      filteredData = filteredBody(req.body, "products", "user");
-    else
-      filteredData = filteredBody(
-        req.body,
-        "plantName",
-        "potName",
-        "images",
-        "about",
-        "price",
-        "ratings",
-        "plantType"
-      );
+    const filteredData = filteredBody(
+      req.body,
+      "plantName",
+      "potName",
+      "images",
+      "about",
+      "price",
+      "ratings",
+      "plantType"
+    );
 
     const data = await Model.create(filteredData);
 
@@ -106,6 +102,85 @@ exports.createOne = (Model, type = "no-filter") =>
       status: "success",
       data: {
         data,
+      },
+    });
+  });
+
+exports.updateCartItem = (Model) =>
+  catchAsync(async (req, res) => {
+    const {type} = req.body;
+    const find = await Model.findOne({ user: req.user._id });
+    const product = [...find[type]];
+    const itemRemove = req.body[type];
+    const findItem = product.find((ele) => String(ele._id) === itemRemove);
+
+    if (!findItem)
+      return res.status(400).json({
+        status: "fail",
+        message: "Unable to delete item!",
+      });
+
+    const index = product.findIndex((item) => String(item._id) === itemRemove);
+    product[index] = "";
+    const newData = product.filter((item) => item);
+
+    const update = await Model.findByIdAndUpdate(
+      find._id,
+      { [type]: newData },
+      {
+        runValidators: true,
+        new: true,
+      }
+    );
+
+    res.status(200).json({
+      status: "success",
+      message: "Item removed successfully!",
+      data: {
+        data: update,
+      },
+    });
+  });
+
+exports.createCartItem = (Model) =>
+  catchAsync(async (req, res, next) => {
+    const { type } = req.body;
+    const find = await Model.findOne({ user: req.user._id });
+
+    if (!find) {
+      const cartItem = await Model.create({ [type]: req.body[type], user: req.user._id });
+
+      res.status(200).json({
+        status: "success",
+        message: "Data added successfully!",
+        data: {
+          cartItem,
+        },
+      });
+    } else {
+      req.cartData = find;
+      next();
+    }
+  });
+
+exports.updateExisiting = (Model) =>
+  catchAsync(async (req, res) => {
+    const { type } = req.body;
+    const data = filteredBody(req.body, type);
+    const ID = req.cartData._id;
+    const filter = [...req.cartData[type]].map((ele) => String(ele._id));
+    const mergeData = { [type]: [...new Set([...filter, ...data[type]])] };
+
+    const find = await Model.findByIdAndUpdate(ID, mergeData, {
+      runValidators: true,
+      new: true,
+    });
+
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        item: find,
       },
     });
   });

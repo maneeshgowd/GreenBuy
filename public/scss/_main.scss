@@ -12,6 +12,17 @@
     height: 100%;
     z-index: -1;
     background-color: style.color(accent-clr);
+    animation: anim 1s ease 0s 1 both alternate;
+
+    @keyframes anim {
+      0% {
+        clip-path: polygon(3% 3%, 97% 3%, 97% 97%, 3% 97%);
+      }
+
+      100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+    }
 
     &::before {
       content: "";
@@ -29,11 +40,37 @@
     &__image {
       position: absolute;
       z-index: -2;
+      background-image: url("/img/leaf-1.jpg");
+      background-position: center;
+      background-size: cover;
       width: 100%;
       height: 100%;
-      transition: all 300ms ease;
+      animation: image 12s ease 0s infinite both alternate;
+
+      @keyframes image {
+        0% {
+          background-image: url("/img/leaf-1.jpg");
+        }
+
+        50% {
+          background-image: url("/img/leaf-2.jpg");
+        }
+
+        100% {
+          background-image: url("/img/leaf-3.jpg");
+        }
+      }
     }
   }
+}
+
+.anim {
+  opacity: 0;
+  transform: translateY(6rem);
+}
+
+.section {
+  transition: all 1s ease;
 }
 
 .image-anim {
@@ -354,4 +391,8 @@
 .success {
   color: style.color(accent-clr);
   border: 2px solid style.color(accent-clr);
+}
+
+.user--img {
+  border-radius: 50%;
 }

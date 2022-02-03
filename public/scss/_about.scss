@@ -65,6 +65,7 @@
 
   & .user__img {
     width: 10em;
+    border-radius: 50%;
   }
 
   & .avatar {
@@ -199,9 +200,9 @@
   grid-template-rows: repeat(2, auto);
   justify-items: center;
 
-  & blockquote{
+  & blockquote {
     position: absolute;
-    top:60%;
+    top: 60%;
   }
 
   .form__password {
@@ -312,7 +313,7 @@ textarea:invalid + label {
   transition: all 200ms ease;
 }
 
-select[name="select"] {
+select[name="country"] {
   @include style.input();
 }
 

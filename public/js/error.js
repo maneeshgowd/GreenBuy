@@ -1,4 +1,4 @@
-export default function errorDisplay(errMsg, classlist = "error") {
+export default function errorDisplay(errMsg, classlist = "error",time=5000) {
   const message = `<h1 class="error-msg ${classlist}">${errMsg}</h1>`;
   const body = document.querySelector("body");
 
@@ -6,5 +6,5 @@ export default function errorDisplay(errMsg, classlist = "error") {
 
   body.insertAdjacentHTML("afterbegin", message);
 
-  window.setTimeout(() => body.removeChild(body.querySelector(".error-msg")), 5000);
+  window.setTimeout(() => body.removeChild(body.querySelector(".error-msg")), time);
 }

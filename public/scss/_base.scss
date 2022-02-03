@@ -64,3 +64,20 @@ img {
   border-radius: 20px;
   border: 3px solid rgb(175, 175, 175);
 }
+
+.four-div {
+  width: 100%;
+  min-height: 90vh;
+  @include style.flex();
+  flex-direction: column;
+  gap: 2em;
+  color: style.color(accent-clr);
+}
+
+.four {
+  font-size: 10rem;
+}
+
+.four-title {
+  font-size: 1.5rem;
+}

@@ -1,9 +1,9 @@
 extends base
 
 mixin star(color="#ffae00")
-    svg.icons--mini(xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.2" stroke="#4a4a4a" fill=color stroke-linecap="round" stroke-linejoin="round")
-        path(stroke="none" d="M0 0h24v24H0z" fill="none")
-        path(d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z")
+    svg.icons--star.icons--mini(xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.2" stroke="#4a4a4a" fill=color stroke-linecap="round" stroke-linejoin="round")
+        path(stroke="none" d="M0 0h24v24H0z" fill="none" style="pointer-events:none;")
+        path(d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" style="pointer-events:none;")
         //- path(d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253z")
 
 
@@ -42,10 +42,10 @@ block content
                 img#filter-cancel.filter-cancel.icons(src='icons/cancel-2.svg' alt='cancel')
                 .filter__price
                     h2.filter__price__title price range
-                    div
+                    div#price-range
                         input(type='number' placeholder='Min' min='100')
                         input(type='number' placeholder='Max' min='200' max='9999')
-                .filter__rating
+                #ratings.filter__rating
                     h2.filter__rating__title Rating
                     .rating-icons
                         input(type='checkbox')
@@ -55,17 +55,17 @@ block content
                         +star("none")
                         +star("none")
                         span above
-                button.set__cat Set Filter
+                button#set-filter.set__cat Set Filter
             section.product-display
                 .sort
                     h2.sort__title Sort
-                    button.sort__btn most popular
+                    button#most-popular.sort__btn(data-btn="pots") most popular
                     button.sort__btn
                         | most new
                         // <img src="icons/cancel.svg" alt="cancel" class="icons--mini" />
                 div#product-container.product-container
                     each pot in pots
-                        #product.product--prod(href="#")
+                        #product.product--prod(data-prodid=`${pot._id}` data-type="pot")
                             img.product-image(src=`img/${pot.images}` alt=`${pot.potName}`)
                             h2.product-name= pot.potName
                             .product-rating

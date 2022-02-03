@@ -5,7 +5,8 @@ block content
   .wrapper
     main#top.main
       .main-image
-        img#main-image.main-image__image(src='/img/leaf-1.jpg' alt='main-image')
+        //- img#main-image.main-image__image(src='/img/leaf-1.jpg' alt='main-image')
+        dif.main-image__image
       header#index-header.header
         nav.nav--logo
           a.nav__ele.header--logo(href='/')
@@ -33,7 +34,7 @@ block content
         if user 
           a#user-login.nav__ele.user__ele(href='/my-account')
             span= user.name.split(" ")[0]
-            img.icons(src='/icons/user-avatar.svg' alt=`${user.name}`)
+            img.icons.user--img(src=`/img/users/${user.photo}` alt=`${user.name}`)
         else
           nav.nav
             a.nav__ele.icons--icon(href='/login')
@@ -52,7 +53,7 @@ block content
         a.content__btn(href='/products') Explore products
     section.products
       .products-container
-        #popular-products.popular-products
+        #popular-products.popular-products.section
           .product-content
             h1.product-content__title Popular products
             a.product-content__btn(href='/products') see all
@@ -85,7 +86,7 @@ block content
                   h2.figure__title Flowering plants
                   h2.figure__title.figure--rating
                     | &bigstar;&bigstar;&bigstar;&bigstar;&bigstar;
-        #exclusive-products.exclusive-product
+        #exclusive-products.exclusive-product.section
           .product-content
             h1.product-content__title Exclusive pots and plants
             a.product-content__btn(href='/pots') see all
@@ -102,7 +103,7 @@ block content
             figure.exclusive-plant.exclusive--mini
               a(href='/pots')
                 img.exclusive-plant__img(src='/img/home-pot-4.jpg' alt='Exclusive pots and plants')
-    section.about
+    section.about.section
       .facilities
         img.facilities__img(src='/icons/phone.svg' alt='24/7 support')
         h2.facilities__title Customer service
@@ -118,7 +119,7 @@ block content
         h2.facilities__title 7 days return
         p.facilities__para
           | Easy 7 day return policy, with no extra charges and 100% money back gurantee.
-    footer.footer
+    footer.footer.section
       .footer-container
         nav.nav--logo
           a.nav__ele.header--logo(href='/')
@@ -166,10 +167,10 @@ block content
       a.menu-link(href='/products') Flowering plants
     if user 
       a.menu-link.user__user(href='/my-account')
-        img.icons--mini(src='/icons/user-avatar.svg' alt=`${user.name}`)
+        img.icons--mini.user--img(src=`/img/users/${user.photo}` alt=`${user.name}`)
         span My Account
       a#logout-user.menu-link.user__user(href='#')
-        img.icons--mini(src='/icons/logout.svg' alt=`logout`)
+        img.icons--mini(src='/icons/logout-2.svg' alt=`logout`)
         span Logout
     else
       .auth

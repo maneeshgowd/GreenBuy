@@ -62,7 +62,8 @@
     width: 100%;
     grid-column: 1 / -1;
     grid-row: 1 / 2;
-    height: 8em;
+    height: 10em;
+    object-fit: cover;
 
     @include style.tablet {
       grid-column: 1 / 2;
@@ -109,6 +110,7 @@
   .purchase-icons {
     margin-top: 2em;
     align-self: flex-end;
+    @include style.flex();
   }
 
   .purchase-icon {
@@ -120,6 +122,21 @@
   .purchase-icon:first-child {
     margin-right: 1em;
   }
+}
+
+.items__ratings {
+  @include style.flex();
+  gap: 1rem;
+}
+
+.ratings__title {
+  font-size: 1.125rem;
+  margin-bottom: 0.3rem;
+}
+
+.wishlist {
+  height: auto;
+  margin-right: 1em;
 }
 
 .product-count {

@@ -263,12 +263,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
   gap: 1em;
+  padding-bottom: 1rem;
 
   @include style.tablet {
     grid-column: 1 / 2;
     grid-row: 2 / -1;
     overflow-y: scroll;
-    height: 35rem;
+    max-height: 35rem;
   }
 
   .product--prod {
@@ -362,6 +363,14 @@
 .wishlist-wishlist {
   stroke: none;
   fill: style.color(invalid);
+}
+
+.star {
+  fill: #ffae00;
+}
+
+.icons--star {
+  cursor: pointer;
 }
 
 .product--menu {
