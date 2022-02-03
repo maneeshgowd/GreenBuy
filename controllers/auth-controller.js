@@ -14,15 +14,14 @@ const signInToken = (id) =>
     expiresIn: process.env.JWT_EXPIRESIN,
   });
 
-const createAndSendToken = (user, statusCode, res) => {
+const createAndSendToken = (req, user, statusCode, res) => {
   const token = signInToken(user._id);
 
   const cookieOptions = {
     expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRESIN * 24 * 60 * 60 * 1000),
     httpOnly: true,
+    secure: req.secure || req.headers("x-forwarded-proto") === "https",
   };
-
-  if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
 
   res.cookie("jwt", token, cookieOptions);
 
@@ -60,7 +59,7 @@ exports.signup = catchAsync(async (req, res) => {
     "photo"
   );
   const user = await User.create(filteredData);
-  createAndSendToken(user, 201, res);
+  createAndSendToken(req, user, 201, res);
 });
 
 exports.login = catchAsync(async (req, res, next) => {
@@ -73,7 +72,7 @@ exports.login = catchAsync(async (req, res, next) => {
   if (!user || !(await user.validateUserPassword(password, user.password)))
     return next(new ApiError("Incorrect email or password", 401));
 
-  createAndSendToken(user, 200, res);
+  createAndSendToken(req, user, 200, res);
 });
 
 exports.closeAccount = catchAsync(async (req, res, next) => {
@@ -174,7 +173,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 
   await user.save();
 
-  createAndSendToken(user, 200, res);
+  createAndSendToken(req,user, 200, res);
 });
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
@@ -190,7 +189,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   user.passwordConfirm = req.body.passwordConfirm;
   await user.save();
   // login the user and send JWT
-  createAndSendToken(user, 200, res);
+  createAndSendToken(req,user, 200, res);
 });
 
 exports.isLoggedIn = catchAsync(async (req, res, next) => {
