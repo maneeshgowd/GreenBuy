@@ -1,8 +1,6 @@
 const express = require("express");
 const path = require("path");
-
 const compression = require("compression");
-
 const hpp = require("hpp");
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
@@ -10,7 +8,7 @@ const xss = require("xss-clean");
 const rateLimit = require("express-rate-limit");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
-
+const cors = require("cors");
 // const ApiError = require("./utils/apiError");
 const userRoute = require("./routes/userRoutes");
 const productRoute = require("./routes/productRoutes");
@@ -23,7 +21,7 @@ const errorController = require("./controllers/errorController");
 
 const app = express();
 
-app.enable('trust proxy');
+app.enable("trust proxy");
 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
@@ -33,6 +31,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // set security HTPP headers
 app.use(helmet());
+
+// Allow-access-control-allow-origin *
+app.use(cors());
+
+app.options("*", cors());
 
 // body parser
 app.use(express.json({ limit: "10kb" }));
