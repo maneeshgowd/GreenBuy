@@ -3,7 +3,7 @@ import errorDisplay from "./error";
 
 export const queryParam = async function (queryString, endPoint) {
   try {
-    const request = await fetch(`http://127.0.0.1:7000/api/v1/${endPoint}${queryString}`, {
+    const request = await fetch(`/api/v1/${endPoint}${queryString}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -22,7 +22,7 @@ export const queryParam = async function (queryString, endPoint) {
 
 export const userLogin = async function (data) {
   try {
-    const request = await fetch(`http://127.0.0.1:7000/api/v1/users/login`, {
+    const request = await fetch(`/api/v1/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ export const userLogin = async function (data) {
 
 export const logoutUser = async function () {
   try {
-    const request = await fetch(`http://127.0.0.1:7000/api/v1/users/logout`, {
+    const request = await fetch(`/api/v1/users/logout`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -66,7 +66,7 @@ export const logoutUser = async function () {
 
 export const userSignup = async function (data, endPoint) {
   try {
-    const request = await fetch(`http://127.0.0.1:7000/api/v1/users/${endPoint}`, {
+    const request = await fetch(`/api/v1/users/${endPoint}`, {
       method: `POST`,
       headers: {
         "Content-Type": "application/json",
@@ -89,7 +89,7 @@ export const userSignup = async function (data, endPoint) {
 
 export const userDataUpdate = async function (data) {
   try {
-    const request = await fetch(`http://127.0.0.1:7000/api/v1/users/updateMe`, {
+    const request = await fetch(`/api/v1/users/updateMe`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -112,7 +112,7 @@ export const userDataUpdate = async function (data) {
 
 export const userImageUpdate = async function (data) {
   try {
-    const request = await fetch(`http://127.0.0.1:7000/api/v1/users/updateMe`, {
+    const request = await fetch(`/api/v1/users/updateMe`, {
       method: "PATCH",
       mode: "cors",
       body: data,
@@ -130,7 +130,7 @@ export const userImageUpdate = async function (data) {
 
 export const userPasswordUpdate = async function (data) {
   try {
-    const request = await fetch(`http://127.0.0.1:7000/api/v1/users/updateMyPassword`, {
+    const request = await fetch(`/api/v1/users/updateMyPassword`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -153,7 +153,7 @@ export const userPasswordUpdate = async function (data) {
 
 export const deleteUser = async function (data) {
   try {
-    const request = await fetch(`http://127.0.0.1:7000/api/v1/users/deleteMe`, {
+    const request = await fetch(`/api/v1/users/deleteMe`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -177,7 +177,7 @@ export const deleteUser = async function (data) {
 
 export const forgetPassword = async function (email) {
   try {
-    const request = await fetch(`http://127.0.0.1:7000/api/v1/users/forgotPassword`, {
+    const request = await fetch(`/api/v1/users/forgotPassword`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -200,7 +200,7 @@ export const forgetPassword = async function (email) {
 
 export const resetForgetPassword = async function (data, token) {
   try {
-    const request = await fetch(`http://127.0.0.1:7000/api/v1/users/resetPassword/${token}`, {
+    const request = await fetch(`/api/v1/users/resetPassword/${token}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -225,7 +225,7 @@ export const resetForgetPassword = async function (data, token) {
 
 export const addItemToCart = async function (data) {
   try {
-    const request = await fetch(`http://127.0.0.1:7000/api/v1/cart`, {
+    const request = await fetch(`/api/v1/cart`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -245,7 +245,7 @@ export const addItemToCart = async function (data) {
 
 export const updateCartWishlist = async function (data, endPoint) {
   try {
-    const request = await fetch(`http://127.0.0.1:7000/api/v1/${endPoint}`, {
+    const request = await fetch(`/api/v1/${endPoint}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -265,7 +265,7 @@ export const updateCartWishlist = async function (data, endPoint) {
 
 export const addItemToWishlit = async function (data) {
   try {
-    const request = await fetch(`http://127.0.0.1:7000/api/v1/wishlist`, {
+    const request = await fetch(`/api/v1/wishlist`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -286,7 +286,7 @@ export const addItemToWishlit = async function (data) {
 
 export const checkoutSession = async function (data) {
   try {
-    const session = await fetch(`http://127.0.0.1:7000/api/v1/bookings/checkout-session/`, {
+    const session = await fetch(`/api/v1/bookings/checkout-session/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -307,7 +307,7 @@ export const checkoutSession = async function (data) {
 
 export const viewBookings = async function () {
   try {
-    const request = await fetch("http://127.0.0.1:7000/my-bookings");
+    const request = await fetch("/my-bookings");
     const response = await request.json();
     return response;
   } catch (err) {

@@ -1,6 +1,9 @@
 const express = require("express");
 const path = require("path");
 
+const compression = require("compression");
+
+const hpp = require("hpp");
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
@@ -39,6 +42,15 @@ app.use(mongoSanitize());
 
 // data sanitization against xss
 app.use(xss());
+
+// Prevent parameter pollution
+app.use(
+  hpp({
+    whitelist: ["categories", "ratings", "price"],
+  })
+);
+
+app.use(compression());
 
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 

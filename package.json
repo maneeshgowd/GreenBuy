@@ -8,15 +8,17 @@
     "start:prod": "NODE_ENV=production nodemon NodeProj/server.js",
     "scss": "sass --watch public/scss:public/css",
     "js": "parcel watch public/js/controller.js --out-dir public/bundledJS",
-    "dev": "parcel public/overview.html"
+    "devjs": "parcel build ./public/js/controller.js --out-dir public/bundledJS"
   },
   "keywords": [],
   "author": "Maneesh Gowd",
   "license": "ISC",
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/plugin-proposal-optional-chaining": "^7.16.7",
     "@swc/helpers": "^0.3.2",
     "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "core-js": "^3.20.2",
     "cors": "^2.8.5",
@@ -25,6 +27,7 @@
     "express-mongo-sanitize": "^2.2.0",
     "express-rate-limit": "^5.5.1",
     "helmet": "^5.0.2",
+    "hpp": "^0.2.3",
     "html-to-text": "^8.1.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.8",
