@@ -61,6 +61,8 @@ class View {
   _closePassword = document.getElementById("close-password");
   _closeAccount = document.getElementById("close-account");
   _myOrders = document.getElementById("my-orders");
+  _overviewCheckoutBtn = document.getElementById("checkoutBtn");
+  _overviewAddToCart = document.getElementById("addToCart");
 
   ////////
 
@@ -254,6 +256,11 @@ class View {
 
   addMostPopularHandler(handler) {
     this._mostPopular?.addEventListener("click", handler);
+  }
+
+  addProductOverviewHandler(cartHandler, checkoutHandler) {
+    this._overviewAddToCart?.addEventListener("click", cartHandler);
+    this._overviewCheckoutBtn?.addEventListener("click", checkoutHandler);
   }
 
   viewFilterData(prod) {

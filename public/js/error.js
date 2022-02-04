@@ -6,5 +6,5 @@ export default function errorDisplay(errMsg, classlist = "error",time=5000) {
 
   body.insertAdjacentHTML("afterbegin", message);
 
-  window.setTimeout(() => body.removeChild(body.querySelector(".error-msg")), time);
+  window.setTimeout(() => body.querySelector(".error-msg") && body.removeChild(body.querySelector(".error-msg")), time);
 }

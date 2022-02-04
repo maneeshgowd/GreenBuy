@@ -35,7 +35,19 @@ const createAndSendToken = (req, user, statusCode, res) => {
 exports.otp = catchAsync(async (req, res) => {
   const filteredData = filterBody(req.body, "name", "email");
 
-  const OTP = randomOTPGenerator();
+  const email = await User.findOne({ email: filteredData.email });
+
+  if (email)
+    return res.status(401).json({
+      status: "fail",
+      message: "User already exists!",
+    });
+
+  let OTP = randomOTPGenerator();
+
+  if (String(OTP).length === 7) {
+    OTP = String(OTP).slice(0, -1);
+  }
 
   const url = `${req.protocol}//:${req.get("host")}/`;
 
@@ -173,7 +185,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 
   await user.save();
 
-  createAndSendToken(req,user, 200, res);
+  createAndSendToken(req, user, 200, res);
 });
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
@@ -189,7 +201,7 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   user.passwordConfirm = req.body.passwordConfirm;
   await user.save();
   // login the user and send JWT
-  createAndSendToken(req,user, 200, res);
+  createAndSendToken(req, user, 200, res);
 });
 
 exports.isLoggedIn = catchAsync(async (req, res, next) => {

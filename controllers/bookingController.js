@@ -51,8 +51,8 @@ exports.getCheckOutSession = catchAsync(async (req, res, next) => {
     customer_email: req.user.email,
     client_reference_id: req.user._id,
     metadata: {
-      product: product,
-      pot: pot,
+      product: String(...product),
+      pot: String(...pot),
     },
     line_items: newData,
   });
@@ -68,8 +68,8 @@ const createBookingCheckout = async function (session) {
   const quantity = session.line_items.reduce((acc, qun) => acc + qun.quantity, 0);
 
   await Booking.create({
-    product: session.metadata.product,
-    pot: session.metadata.pot,
+    product: session.metadata.product.split(" "),
+    pot: session.metadata.pot.split(" "),
     user: session.client_reference_id,
     price,
     quantity,

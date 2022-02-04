@@ -12,7 +12,7 @@ module.exports = class Email {
   }
 
   newCreateTransport() {
-    if (process.env.NODE_ENV === "production") {
+    // if (process.env.NODE_ENV === "production") {
       return nodemailer.createTransport({
         service: "SendGrid",
         auth: {
@@ -20,16 +20,16 @@ module.exports = class Email {
           pass: process.env.SENDGRID_PASSWORD,
         },
       });
-    }
+    // }
 
-    return nodemailer.createTransport({
-      host: process.env.EMAIL_HOST,
-      port: process.env.EMAIL_PROT,
-      auth: {
-        user: process.env.EMAIL_USERNAME,
-        pass: process.env.EMAIL_PASSWORD,
-      },
-    });
+    // return nodemailer.createTransport({
+    //   host: process.env.EMAIL_HOST,
+    //   port: process.env.EMAIL_PROT,
+    //   auth: {
+    //     user: process.env.EMAIL_USERNAME,
+    //     pass: process.env.EMAIL_PASSWORD,
+    //   },
+    // });
   }
 
   async send(template, subject) {

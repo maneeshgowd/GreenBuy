@@ -172,7 +172,7 @@ const viewAuthCreate = async function (e, inputArr) {
     repeatPassword.value.trim(),
     name.value.trim()
   );
-  if (validatedData.includes(0)) return errorDisplay("Passwords dosen't match");
+  if (validatedData.includes(0)) return errorDisplay("Passwords dosen't match", "error");
 
   errorDisplay("Please wait!..", "success", 10000);
 
@@ -183,16 +183,20 @@ const viewAuthCreate = async function (e, inputArr) {
     passwordConfirm: validatedData[2],
   };
 
-  const otp = await model.userSignup(userData, "validate");
+  try {
+    const otp = await model.userSignup(userData, "validate");
 
-  if (otp.status !== "success") return errorDisplay(otp.message, "error");
+    if (otp.status !== "success") throw new Error(otp.message);
 
-  sessionStorage.setItem("OTP", otp.OTP);
-  sessionStorage.setItem("data", JSON.stringify(userData));
+    sessionStorage.setItem("OTP", otp.OTP);
+    sessionStorage.setItem("data", JSON.stringify(userData));
 
-  this.classList.add("hidden-helper");
+    this.classList.add("hidden-helper");
 
-  this.nextElementSibling.classList.remove("hidden-helper");
+    this.nextElementSibling.classList.remove("hidden-helper");
+  } catch (err) {
+    errorDisplay(err.message, "error");
+  }
 };
 
 function viewLogoutHandler() {
@@ -390,6 +394,15 @@ const viewUploadUserImage = function () {
   model.userImageUpdate(form);
 };
 
+const viewOverviewCartHandler = function () {
+  const items = cartItemAdder("cart", "#overview");
+  model.addItemToCart({ product: items, type: "product" });
+};
+
+const viewOverViewCheckoutHandler = function () {
+  location.assign("/cart");
+};
+
 const checkoutSession = function (e) {
   const product = [...this.previousElementSibling.querySelectorAll(".items")].map((ele) => {
     const quantity = +ele.querySelector(".product-count").value;
@@ -428,6 +441,7 @@ const IFEE = function () {
   view.addChangeForgetPass(viewChangeForgetPass);
   view.addWishlistFeatures(viewWishlistFeatureHandler);
   view.addCheckoutSession(checkoutSession);
+  view.addProductOverviewHandler(viewOverviewCartHandler, viewOverViewCheckoutHandler);
 };
 
 IFEE();
