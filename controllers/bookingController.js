@@ -53,7 +53,8 @@ exports.getCheckOutSession = catchAsync(async (req, res, next) => {
     success_url: `${req.protocol}://${req.get("host")}/`,
     cancel_url: `${req.protocol}://${req.get("host")}/products/`,
     customer_email: req.user.email,
-    client_reference_id: id,
+    client_reference_id: req.user._id,
+    product_details_id: id,
     line_items: newData,
   });
 
@@ -64,16 +65,14 @@ exports.getCheckOutSession = catchAsync(async (req, res, next) => {
 });
 
 const createBookingCheckout = async function (session) {
-  const id = session.client_reference_id.split("pot");
+  const id = session.product_details_id.split("pot");
   const product = id[0].split("-");
   const pot = id[1].split("-");
-
-  const email = (await User.findOne({ email: session.customer_email }))._id;
 
   const price = session.line_items.reduce((acc, amt) => acc + amt.amount / 100, 0);
   const quantity = session.line_items.reduce((acc, qun) => acc + qun.quantity, 0);
 
-  await Booking.create({ product, pot, email, price, quantity });
+  await Booking.create({ product, pot, user: session.client_reference_id, price, quantity });
 };
 
 exports.webhookCheckout = (req, res, next) => {
