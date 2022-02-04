@@ -65,7 +65,7 @@ exports.getCheckOutSession = catchAsync(async (req, res, next) => {
 });
 
 const createBookingCheckout = async function (session) {
-  const id = session.product_details_id.split("pot");
+  const id = session.metadata.split("pot");
   const product = id[0].split("-");
   const pot = id[1].split("-");
 
