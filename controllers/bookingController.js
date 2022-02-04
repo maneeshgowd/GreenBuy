@@ -4,6 +4,7 @@ const PotModel = require("../models/potsModel");
 const catchAsync = require("../utils/catchAsync");
 const handleFactory = require("./handleFactory");
 const Booking = require("../models/bookingModel");
+const User = require("../models/userModel");
 
 const filterVal = function (data) {
   const prod = [];
@@ -43,6 +44,7 @@ exports.getCheckOutSession = catchAsync(async (req, res, next) => {
   const pots = await PotModel.find({ _id: { $in: pot } });
   const newData = combineData(products, pots, req.body.product);
 
+  pot.shift("pot");
   const id = [...product, ...pot].join("-");
 
   // 2. create the checkout session
@@ -70,22 +72,33 @@ exports.createBookingCheckout = catchAsync(async (req, res, next) => {
   res.redirect(req.originalURL.split("?")[0]);
 });
 
-exports.createBooking = catchAsync(async (req, res, next) => {
-  const booking = await Booking.create({
-    product: req.body.product,
-    pot: req.body.pot,
-    user: req.user._id,
-    price: req.body.price,
-    quantity: req.body.quantity,
-  });
+const createBookingCheckout = async function (session) {
+  const id = session.client_reference_id.split("pot");
+  const product = id[0].split("-");
+  const pot = id[1].split("-");
 
-  res.status(201).json({
-    status: "success",
-    data: {
-      booking,
-    },
-  });
-});
+  const email = (await User.findOne({ email: session.customer_email }))._id;
+
+  const price = session.line_items.reduce((acc, amt) => acc + amt.amount / 100, 0);
+  const quantity = session.line_items.reduce((acc, qun) => acc + qun.quantity, 0);
+
+  await Booking.create({ product, pot, email,price,quantity });
+};
+
+exports.webhookCheckout = (req, res, next) => {
+  const signature = req.headers("stripe-signature");
+  let event;
+  try {
+    event = stripe.webhooks.consttructEvent(req.body, signature, process.env.STRIPE_WEBHOOK_SECRET);
+  } catch (err) {
+    return res.status(400).send(`Webhook error: ${err.message}`);
+  }
+
+  if (event.type === "checkout-session-completed") createBookingCheckout(event.data.object);
+
+  res.status(200).json({ received: true });
+};
+
 exports.getBooking = handleFactory.getOne(Booking);
 exports.getAllBooking = handleFactory.getAll(Booking);
 exports.deleteBooking = handleFactory.deleteOne(Booking);

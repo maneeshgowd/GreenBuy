@@ -18,6 +18,7 @@ const cartRoute = require("./routes/cartRoutes");
 const potRoute = require("./routes/potsRoutes");
 const bookingRoute = require("./routes/bookingRoutes");
 const errorController = require("./controllers/errorController");
+const bookingController = require("./controllers/bookingController");
 
 const app = express();
 
@@ -36,6 +37,13 @@ app.use(helmet());
 app.use(cors());
 
 app.options("*", cors());
+
+// needs body in raw form
+app.post(
+  "/webhook-checkout",
+  express.raw({ type: "application/json" }),
+  bookingController.webhookCheckout
+);
 
 // body parser
 app.use(express.json({ limit: "10kb" }));
