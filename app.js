@@ -41,7 +41,7 @@ app.options("*", cors());
 // needs body in raw form
 app.post(
   "/webhook-checkout",
-  express.raw({ type: "application/json" }),
+  express.raw([]),
   bookingController.webhookCheckout
 );
 

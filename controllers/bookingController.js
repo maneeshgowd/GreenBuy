@@ -63,15 +63,6 @@ exports.getCheckOutSession = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.createBookingCheckout = catchAsync(async (req, res, next) => {
-  const { products, user, price, quantity } = req.query;
-  if (!products && !user && !price && !quantity) return next();
-
-  await Booking.create({ products, user, price, quantity });
-
-  res.redirect(req.originalURL.split("?")[0]);
-});
-
 const createBookingCheckout = async function (session) {
   const id = session.client_reference_id.split("pot");
   const product = id[0].split("-");
@@ -82,7 +73,7 @@ const createBookingCheckout = async function (session) {
   const price = session.line_items.reduce((acc, amt) => acc + amt.amount / 100, 0);
   const quantity = session.line_items.reduce((acc, qun) => acc + qun.quantity, 0);
 
-  await Booking.create({ product, pot, email,price,quantity });
+  await Booking.create({ product, pot, email, price, quantity });
 };
 
 exports.webhookCheckout = (req, res, next) => {

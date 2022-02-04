@@ -10,7 +10,7 @@ router.post(
   bookingController.getCheckOutSession
 );
  
-router.route("/").get(bookingController.getAllBooking).post(bookingController.createBooking);
+router.route("/").get(bookingController.getAllBooking)
 
 router.use(authController.restrict("admin", "seller"));
 router
