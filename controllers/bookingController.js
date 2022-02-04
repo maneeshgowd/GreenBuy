@@ -54,7 +54,7 @@ exports.getCheckOutSession = catchAsync(async (req, res, next) => {
     cancel_url: `${req.protocol}://${req.get("host")}/products/`,
     customer_email: req.user.email,
     client_reference_id: req.user._id,
-    product_details_id: id,
+    metadata: id,
     line_items: newData,
   });
 
