@@ -4,7 +4,6 @@ const PotModel = require("../models/potsModel");
 const catchAsync = require("../utils/catchAsync");
 const handleFactory = require("./handleFactory");
 const Booking = require("../models/bookingModel");
-const User = require("../models/userModel");
 
 const filterVal = function (data) {
   const prod = [];
@@ -44,9 +43,6 @@ exports.getCheckOutSession = catchAsync(async (req, res, next) => {
   const pots = await PotModel.find({ _id: { $in: pot } });
   const newData = combineData(products, pots, req.body.product);
 
-  pot.shift("pot");
-  const id = [...product, ...pot].join("-");
-
   // 2. create the checkout session
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
@@ -54,7 +50,10 @@ exports.getCheckOutSession = catchAsync(async (req, res, next) => {
     cancel_url: `${req.protocol}://${req.get("host")}/products/`,
     customer_email: req.user.email,
     client_reference_id: req.user._id,
-    metadata: id,
+    metadata: {
+      product: product,
+      pot: pot,
+    },
     line_items: newData,
   });
 
@@ -65,14 +64,16 @@ exports.getCheckOutSession = catchAsync(async (req, res, next) => {
 });
 
 const createBookingCheckout = async function (session) {
-  const id = session.metadata.split("pot");
-  const product = id[0].split("-");
-  const pot = id[1].split("-");
-
   const price = session.line_items.reduce((acc, amt) => acc + amt.amount / 100, 0);
   const quantity = session.line_items.reduce((acc, qun) => acc + qun.quantity, 0);
 
-  await Booking.create({ product, pot, user: session.client_reference_id, price, quantity });
+  await Booking.create({
+    product: session.metadata.product,
+    pot: session.metadata.pot,
+    user: session.client_reference_id,
+    price,
+    quantity,
+  });
 };
 
 exports.webhookCheckout = (req, res, next) => {
