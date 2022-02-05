@@ -31,7 +31,7 @@ const combineData = function (prod, pot, data) {
       amount: newData[i].price * 100,
       currency: "inr",
       quantity: data[i].quantity,
-      metadata: { id: String(newData[i]._id) },
+      metadata: { id: `PROD_${String(newData[i]._id)}` },
     });
   }
 
@@ -63,7 +63,7 @@ exports.getCheckOutSession = catchAsync(async (req, res, next) => {
 });
 
 const createBookingCheckout = async function (session) {
-  const id = session.line_items.map((item) => item.metadata.id);
+  const id = session.line_items.map((item) => item.metadata.id.split("PROD_").join(""));
 
   const prod = await ProductModel.find({ _id: { $in: id } });
   const pots = await PotModel.find({ _id: { $in: id } });
