@@ -116,8 +116,14 @@ const viewProductCartHandler = function (data, e) {
   }
 
   if (e.target.id === "remove-cart-item") {
+    const totalItems = document.getElementById("total-items");
+    const totalPrice = document.getElementById("total-price");
+
     const { type, prodid } = e.target.closest(".items").dataset;
     model.updateCartWishlist({ type, [type]: prodid }, "cart/updateCartItem");
+
+    calcProductItemsHandler(e.target.closest("#product-counter"), totalItems, totalPrice);
+    
     e.target.closest(".items").remove();
   }
 
