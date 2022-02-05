@@ -417,6 +417,14 @@ const checkoutSession = function (e) {
   model.checkoutSession({ product });
 };
 
+function alertMessage() {
+  const alert = document.querySelector("body").dataset.alert;
+  if (alert) errorDisplay(alert, "success", 10000);
+  else return;
+}
+
+alertMessage();
+
 ////////////////////////////////////////////////////////
 
 const IFEE = function () {

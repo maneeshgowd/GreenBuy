@@ -2,6 +2,8 @@ const router = require("express").Router();
 const viewController = require("../controllers/viewController");
 const authController = require("../controllers/auth-controller");
 
+router.use(viewController.alerts);
+
 router.route("/signup").get(viewController.signup);
 router.route("/login").get(viewController.login);
 

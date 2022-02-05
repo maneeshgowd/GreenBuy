@@ -13,13 +13,13 @@ module.exports = class Email {
 
   newCreateTransport() {
     // if (process.env.NODE_ENV === "production") {
-      return nodemailer.createTransport({
-        service: "SendGrid",
-        auth: {
-          user: process.env.SENDGRID_USERNAME,
-          pass: process.env.SENDGRID_PASSWORD,
-        },
-      });
+    return nodemailer.createTransport({
+      service: "SendGrid",
+      auth: {
+        user: process.env.SENDGRID_USERNAME,
+        pass: process.env.SENDGRID_PASSWORD,
+      },
+    });
     // }
 
     // return nodemailer.createTransport({
@@ -33,7 +33,7 @@ module.exports = class Email {
   }
 
   async send(template, subject) {
-    const html = pug.renderFile(`${__dirname}/../views/email/${template}.pug`, {
+    const html = pug.renderFile(`../views/email/${template}.pug`, {
       userName: this.userName,
       url: this.url,
       otp: this.OTP,
