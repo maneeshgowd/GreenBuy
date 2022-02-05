@@ -9,6 +9,7 @@ const rateLimit = require("express-rate-limit");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const bodyParser = require('body-parser');
 // const ApiError = require("./utils/apiError");
 const userRoute = require("./routes/userRoutes");
 const productRoute = require("./routes/productRoutes");
@@ -41,7 +42,7 @@ app.options("*", cors());
 // needs body in raw form
 app.post(
   "/webhook-checkout",
-  express.raw({ type: "application/json" }),
+  bodyParser.raw({ type: "application/json" }),
   bookingController.webhookCheckout
 );
 

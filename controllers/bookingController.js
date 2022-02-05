@@ -4,6 +4,7 @@ const PotModel = require("../models/potsModel");
 const catchAsync = require("../utils/catchAsync");
 const handleFactory = require("./handleFactory");
 const Booking = require("../models/bookingModel");
+const User = require("../models/userModel");
 
 const filterVal = function (data) {
   const prod = [];
@@ -30,7 +31,7 @@ const combineData = function (prod, pot, data) {
       amount: newData[i].price * 100,
       currency: "inr",
       quantity: data[i].quantity,
-      metadata: { [newData[i].plantName ? "product" : "pot"]: newData[i]._id },
+      metadata: { id: String(newData[i]._id) },
     });
   }
 
@@ -40,7 +41,6 @@ const combineData = function (prod, pot, data) {
 exports.getCheckOutSession = catchAsync(async (req, res, next) => {
   const [product, pot] = filterVal(req.body.product);
   const userId = req.user._id;
-  console.log(userId);
 
   const products = await ProductModel.find({ _id: { $in: product } });
   const pots = await PotModel.find({ _id: { $in: pot } });
@@ -63,21 +63,23 @@ exports.getCheckOutSession = catchAsync(async (req, res, next) => {
 });
 
 const createBookingCheckout = async function (session) {
-  const product = [];
-  const pot = [];
+  const id = session.line_items.map((item) => item.metadata.id);
 
-  session.line_items.forEach((item) => {
-    if (item.metadata.product) return product.push(item.metadata.product);
-    if (item.metadata.pot) return pot.push(item.metadata.pot);
-  });
+  const prod = await ProductModel.find({ _id: { $in: id } });
+  const pots = await PotModel.find({ _id: { $in: id } });
+
+  const product = prod.map((item) => item._id);
+  const pot = pots.map((item) => item._id);
 
   const price = session.line_items.reduce((acc, amt) => acc + amt.amount / 100, 0);
   const quantity = session.line_items.reduce((acc, qun) => acc + qun.quantity, 0);
 
+  const email = (await User.findOne({ email: session.customer_email })).id;
+
   await Booking.create({
     product,
     pot,
-    user: session.client_reference_id,
+    user: email,
     price,
     quantity,
   });
