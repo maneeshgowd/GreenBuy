@@ -59,7 +59,7 @@ class View {
   _repeatPassword = document.getElementById("repeatPassword");
   _submitPassword = document.getElementById("submit-password");
   _closePassword = document.getElementById("close-password");
-  _closeAccount = document.getElementById("close-account");
+  _closeAccount = document.getElementById("close-user-account");
   _myOrders = document.getElementById("my-orders");
   _overviewCheckoutBtn = document.getElementById("checkoutBtn");
   _overviewAddToCart = document.getElementById("addToCart");
@@ -306,10 +306,10 @@ class View {
       return `
      
       <div class="orders">
-      <img src='/img/${order.images[0]}' alt=${order.plantName || order.potName} />
-      <h2 class="order-title">${order.plantName || order.potName}</h2>
+      <img src='/img/${order.images[0]}' alt=${order.name} />
+      <h2 class="order-title">${order.name}</h2>
       <h2 class="order-title order--mini"> Arriving soon</h2>
-      <h2 class="order-price"> ₹${order.price} </h2>
+      <h2 class="order-price"> ₹${(order.amount / 100) * order.quantity} </h2>
       </div>`;
     });
 

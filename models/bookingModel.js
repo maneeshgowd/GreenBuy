@@ -1,21 +1,7 @@
 const mongoose = require("mongoose");
 
 const Schema = new mongoose.Schema({
-  product: [
-    {
-      type: mongoose.Schema.ObjectId,
-      ref: "products",
-      required: [true, "Booking must belong to a product!"],
-    },
-  ],
-
-  pot: [
-    {
-      type: mongoose.Schema.ObjectId,
-      ref: "Pots",
-      required: [true, "Booking must belong to a product!"],
-    },
-  ],
+  product: [Object],
 
   user: {
     type: mongoose.Schema.ObjectId,

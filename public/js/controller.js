@@ -118,10 +118,10 @@ const viewProductCartHandler = function (data, e) {
   if (e.target.id === "remove-cart-item") {
     const totalItems = document.getElementById("total-items");
     const totalPrice = document.getElementById("total-price");
-    
+
     const { type, prodid } = e.target.closest(".items").dataset;
     model.updateCartWishlist({ type, [type]: prodid }, "cart/updateCartItem");
-    
+
     e.target.closest(".items").remove();
     calcProductItemsHandler(this, totalItems, totalPrice);
   }
@@ -222,17 +222,6 @@ function validateOTP(e) {
   model.userSignup(data, "signup");
 }
 
-function bookingDataCombine(data) {
-  const newData = [];
-
-  for (let i = 0; i < data.length; i++) {
-    newData.push(data[i].pot[i]);
-    newData.push(data[i].product[i]);
-  }
-
-  return newData;
-}
-
 const viewUserSettingsToggleHandler = async function (e, buttons, sections) {
   const [passwordInfo, personelInfo, myOrders, closeInfo] = sections;
   if (!e.target.classList.contains("user-settings-btn")) return;
@@ -246,9 +235,9 @@ const viewUserSettingsToggleHandler = async function (e, buttons, sections) {
   if (e.target.id === "user-password") passwordInfo.classList.remove("hidden-helper");
   if (e.target.id === "user-orders") {
     const data = await model.viewBookings();
-    const formattedData = bookingDataCombine(data.data.bookings);
+
     myOrders.classList.remove("hidden-helper");
-    view.addMyBookingsHandler(formattedData);
+    view.addMyBookingsHandler(data.data.bookings.product);
   }
   if (e.target.id === "close-account") closeInfo.classList.remove("hidden-helper");
 };
@@ -381,11 +370,11 @@ const viewUpdateUserPasswordHandler = function (e) {
 
 const viewCloseUserAccountHandler = function (e) {
   e.preventDefault();
-  const newData = validateuserData(this);
+  const newData = this.value.trim();
 
   if (newData.length === 0) return;
 
-  const data = arrayToObj(newData);
+  const data = { password: newData };
 
   model.deleteUser(data);
 };

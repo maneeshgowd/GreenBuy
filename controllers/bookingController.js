@@ -31,7 +31,6 @@ const combineData = function (prod, pot, data) {
       amount: newData[i].price * 100,
       currency: "inr",
       quantity: data[i].quantity,
-      metadata: { id: `PROD_${String(newData[i]._id)}` },
     });
   }
 
@@ -63,22 +62,13 @@ exports.getCheckOutSession = catchAsync(async (req, res, next) => {
 });
 
 const createBookingCheckout = async function (session) {
-  const id = session.line_items.map((item) => item.metadata.id.split("PROD_").join(""));
-
-  const prod = await ProductModel.find({ _id: { $in: id } });
-  const pots = await PotModel.find({ _id: { $in: id } });
-
-  const product = prod.map((item) => item._id);
-  const pot = pots.map((item) => item._id);
-
   const price = session.line_items.reduce((acc, amt) => acc + amt.amount / 100, 0);
   const quantity = session.line_items.reduce((acc, qun) => acc + qun.quantity, 0);
 
   const email = (await User.findOne({ email: session.customer_email })).id;
 
   await Booking.create({
-    product,
-    pot,
+    product:session.line_items,
     user: email,
     price,
     quantity,
