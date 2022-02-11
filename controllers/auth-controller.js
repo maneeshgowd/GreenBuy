@@ -99,7 +99,7 @@ exports.closeAccount = catchAsync(async (req, res, next) => {
 
   await User.findByIdAndDelete(req.user._id);
 
-  res.status(204).json({
+  res.status(200).json({
     status: "success",
     data: null,
   });
