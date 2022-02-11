@@ -67,12 +67,15 @@ const createBookingCheckout = async function (session) {
 
   const email = (await User.findOne({ email: session.customer_email })).id;
 
-  await Booking.create({
-    product:session.line_items,
-    user: email,
-    price,
-    quantity,
-  });
+  await Booking.create(
+    {
+      product: session.line_items,
+      user: email,
+      price,
+      quantity,
+    },
+    { new: true, runvalidators: true }
+  );
 };
 
 exports.webhookCheckout = (req, res, next) => {

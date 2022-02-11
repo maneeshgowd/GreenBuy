@@ -167,7 +167,7 @@ export const deleteUser = async function (data) {
     if (response.status !== "success") throw new Error(response.message);
 
     errorDisplay("Deleted user!", "success");
-    logoutUser();
+    window.setTimeout(() => location.assign("/login"), 1500);
   } catch (err) {
     errorDisplay(`${err.message}`, "error");
   }
