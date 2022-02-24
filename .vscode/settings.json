@@ -6,6 +6,9 @@
   "C_Cpp.errorSquiggles": "Enabled",
   "files.associations": {
     "cprogram.C": "cpp",
-    "tempCodeRunnerFile.C": "cpp"
+    "tempCodeRunnerFile.C": "cpp",
+    "iostream": "cpp",
+    "random": "cpp",
+    "sstream": "cpp"
   }
 }
