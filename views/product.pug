@@ -39,8 +39,12 @@ block content
             input.product-count(type='number' min='1' max='10' value="1")
             button.items__feature__btn.btn--increment &plus;
           span &starf; Free delivery for all products above &#x20B9; 499
-          button#addToCart.checkout-btn.btn-cart Add to cart
-          button#checkoutBtn.checkout-btn checkout
+          if user
+            button#addToCart.checkout-btn.btn-cart Add to cart
+            button#checkoutBtn.checkout-btn checkout
+          else
+            a.checkout-btn.btn-cart(href="/login") Add to cart 
+            a.checkout-btn(href="/login") checkout
         .overview-info
           h2.overview-info__title Product descritpion
           p.overview-info__para= product.about
