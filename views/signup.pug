@@ -1,0 +1,35 @@
+extends base
+
+block content 
+  header.header
+    nav.nav--logo
+      a.nav__ele.header--logo(href='/')
+        img.header__logo.icons(src='/icons/green-icon.svg' alt='GreenBuy logo')
+        span.logo-title GreenBuy
+    a.signup.sign--btn(href='/login') login
+  form#form--create.form.form--signup(action='#')
+    h1.form__title create an account
+    .form__name
+      input#name(type='text' name='name' minlength='5' maxlength='20' required='')
+      label(for='name') name
+    .form__email
+      input#create-email(type='email' name='email' required='')
+      label(for='email') email
+    .pass__container
+      .form__pass
+        input#new-password(type='password' name='password' minlength='8' maxlength='15' required='')
+        label(for='password') password
+        img#create-pass-icon.icons--mini.auth-icon(src='/icons/eye-off.svg' alt='show password')
+      .form__pass
+        input#repeat-password(type='password' name='repeat-password' minlength='8' maxlength='15' required='')
+        label(for='repeat-password') repeat password
+        img#create-pass-icon.icons--mini.auth-icon(src='/icons/eye-off.svg' alt='show password')
+    button.form__btn Signup
+    a.sign-up(href='/login') Already a user?
+  form#form--otp.form--otp.hidden-helper.form(action='#')
+    h1.form__title Enter OTP
+    input#otp.otp(type="text" name="otp" minLength="6"  placeholder="_ _ _ _ _ _" required)
+    p.otp-text An OTP of 6-digit has been sent to your email address!
+    button.form__btn validate OTP  
+  img.greenbuy-watermark(src='/icons/green-icon.svg' alt='icon')
+

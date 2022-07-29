@@ -1,0 +1,29 @@
+#product-menu.menu.product--menu.hidden-helper
+    img#cancel-hamburger.menu__cancel.icons(src='/icons/cancel.svg' alt='close')
+    a.menu-link(href='/')
+        img.icons--mini(src='/icons/home.svg' alt='home')
+        span Home
+    a.menu-link(href='/pots')
+        img.icons--mini(src='/icons/pot.svg' alt='pot')
+        span Pots
+    a.menu-link(href='/products')
+        img.icons--mini(src='/icons/icon.svg' alt='plants')
+        span Plants
+    if user    
+        nav.user-nav.menu-nav
+            a.menu-link(href='/cart')
+                img.icons--mini(src='/icons/cart-2.svg' alt='user cart')
+                span Shopping cart
+            a.menu-link(href='wishlist')
+                img.icons--mini(src='/icons/heart-2.svg' alt='wishlist')
+                span My favourites
+            a.menu-link(href='/my-account')
+                img.icons--mini.user--img(src=`/img/users/${user.photo}` alt=`${user.name}`)
+                span My account
+            a#logout-user.menu-link(href='#')
+                img.icons--mini(src='/icons/logout-2.svg' alt='logout')
+                span Logout
+    else 
+        a.menu-link(href='/login')
+            img.icons--mini(src='/icons/login.svg' alt='login')
+            span Login

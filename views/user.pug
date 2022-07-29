@@ -1,0 +1,114 @@
+extends base
+
+block content 
+    .wrapper.cart-wrapper
+        main.cart-main
+            header.header--prod
+                nav.nav--logo
+                    a.nav__ele.header--logo(href='/')
+                        img.header__logo.icons(src='/icons/green-icon.svg' alt='GreenBuy logo')
+                        span.logo-title GreenBuy
+                nav.links
+                    a.links__ele(href='/') home
+                    a.links__ele(href='/pots') pots
+                    // <a href="#" class="links__ele">contact</a>
+                    a.links__ele(href='/products') products
+                nav.user-nav
+                    span#cart-items.cart-items
+                    a(href='/cart')
+                        img.nav--icons(src='/icons/cart.svg' title="Shopping cart" alt='user cart')
+                    a(href='/wishlist')
+                        img.nav--icons(src='/icons/heart.svg' title="Wishlist" alt='wishlist')
+                    a#logout-user(href='#')
+                        img.nav--icons(src='/icons/logout.svg' title="Logout" alt='logout')
+                img#product-hamburger.hamburger.icons(src='/icons/hamburger-2.svg' alt='menu-bar')
+            section.user
+                aside.user__overview
+                    h1.user__overview__title User Information
+                    .user__avatar
+                        img.user__img(src=`/img/users/${user.photo}` alt=`${user.name}`)
+                        label(for='avatar')
+                            div
+                                img.icons--mini(src='/icons/image.svg' alt='image-icon')
+                            input#avatar.avatar(type='file' name='avatar' accept='image/jpg, image/jpeg, image/png')
+                        button#image-upload.image-upload upload image
+                    #user-information.user__info
+                        h1.user__info__title= user.name
+                        .user__btn.info--btn
+                            button#user-personel-info.user-settings-btn personel info
+                            svg(width='80' height='80' viewbox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg')
+                                path(d='M40 75C59.33 75 75 59.33 75 40C75 20.67 59.33 5 40 5C20.67 5 5 20.67 5 40C5 59.33 20.67 75 40 75Z' fill='#17823C')
+                                path(d='M40 15C34.476 15 30 19.478 30 25C30 30.522 34.476 35 40 35C45.524 35 50 30.522 50 25C50 19.478 45.524 15 40 15Z' fill='white')
+                                path(d='M40 40C22.5017 40.0105 22.5 51.0769 22.5 51.0769V55.5769C22.5 55.5769 25.7307 62.5 40 62.5C54.2693 62.5 57.5 55.5769 57.5 55.5769V51.0769C57.5 51.0769 57.5 39.9931 40.0035 40H40Z' fill='white')
+                        .user__btn
+                            button#user-password.user-settings-btn password
+                            svg.icon.icon-tabler.icon-tabler-eye(xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewbox='0 0 24 24' stroke-width='1.5' stroke='#176c36' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                                path(stroke='none' d='M0 0h24v24H0z' fill='none')
+                                circle(cx='12' cy='12' r='2')
+                                path(d='M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7')
+                        .user__btn
+                            button#user-orders.user-settings-btn my orders
+                            svg.icon.icon-tabler.icon-tabler-shopping-cart(xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewbox='0 0 24 24' stroke-width='1.5' stroke='#176c36' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                                path(stroke='none' d='M0 0h24v24H0z' fill='none')
+                                circle(cx='6' cy='19' r='2')
+                                circle(cx='17' cy='19' r='2')
+                                path(d='M17 17h-11v-14h-2')
+                                path(d='M6 5l14 1l-1 7h-13')
+                        .user__btn
+                            button#close-account.user-settings-btn close account
+                            svg.icon.icon-tabler.icon-tabler-x(xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewbox='0 0 24 24' stroke-width='1.5' stroke='#176c36' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                                path(stroke='none' d='M0 0h24v24H0z' fill='none')
+                                line(x1='18' y1='6' x2='6' y2='18')
+                                line(x1='6' y1='6' x2='18' y2='18')
+                main.user__edit
+                    #personel-info.personel-info
+                        h1.personel__title.info--title Personel Information
+                        form#submit-user-data.info-form(action='')
+                            .form__name
+                                input#name(type='text' name='name' minlength='5' maxlength='20' placeholder="your name")
+                                label(for='name') name
+                            .form__email
+                                input#create-email(type='email' name='email' aria-required='false' placeholder=`example@gmail.com`)
+                                label(for='email') email
+                            .form__address
+                                // <input type="text" id="address" name="address" minlength="10" />
+                                textarea#address(name='address' cols='30' rows='5' minlength='10')
+                                label(for='address') address
+                            .form__postcode
+                                input#postcode(type='text' name='postcode' minlength='6' placeholder=`500001`)
+                                label(for='postcode') postcode
+                            .form__location
+                                select#select(name='country')
+                                    option(value='India') India
+                                    option(value='Japan') Japan
+                                    option(value='United States') United States
+                                    option(value='Sri lanka') Sri lanka
+                                    option(value='Australia') Australia
+                                    option(value='Canada') Canada
+                            button.about__btn submit
+                    #password-info.password-info.hidden-helper
+                        h1.password__title.info--title Update password
+                        form#submit-password.pass-info(action='#')
+                            .form__currentPassword
+                                input#currentPassword(type='password' name='passwordCurrent' minlength='5' maxlength='20')
+                                label(for='passwordCurrent') current password
+                            .form__password
+                                input#newPassword(type='password' name='password' minlength='5' maxlength='20')
+                                label(for='password') password
+                            .form__repeatPassword
+                                input#repeatPassword(type='password' name='passwordConfirm' minlength='5' maxlength='20')
+                                label(for='passwordConfirm') repeat password
+                            button.about__btn submit
+                    #close-info.close.hidden-helper
+                        h1.close__title.info--title Close Account
+                        form#close-user-account.close-info(action='')
+                            .form__password
+                                input#close-password(type='password' name='password' minlength='5' maxlength='20')
+                                label(for='password') password
+                            button.about__btn close account
+                            blockquote
+                                strong Note:
+                                |  This action cannot be undone.
+                    #my-orders.my-orders.hidden-helper
+                         
+        include _menu

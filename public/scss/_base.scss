@@ -1,0 +1,83 @@
+@use "_helper" as style;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  background-color: #eee;
+  font-family: Raleway, open sans, sans-serif;
+
+  @include style.large() {
+    margin: 0.8em 0;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 93.75em; // 1500px
+}
+
+::selection {
+  color: #fff;
+  background-color: style.color(accent-clr);
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+p {
+  line-height: 160%;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(175, 175, 175);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: style.color(accent-clr);
+  border-radius: 20px;
+  border: 3px solid rgb(175, 175, 175);
+}
+
+.four-div {
+  width: 100%;
+  min-height: 90vh;
+  @include style.flex();
+  flex-direction: column;
+  gap: 2em;
+  color: style.color(accent-clr);
+}
+
+.four {
+  font-size: 10rem;
+}
+
+.four-title {
+  font-size: 1.5rem;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="scss/style.scss" />
+    <script src="js/controller.js" defer></script>
+    <title>GreenBuy | overview</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <main class="product-overview">
+        <header class="header--prod">
+          <nav class="nav--logo">
+            <a href="/" class="nav__ele header--logo">
+              <img src="icons/green-icon.svg" alt="GreenBuy logo" class="header__logo icons" />
+              <span class="logo-title">GreenBuy</span></a
+            >
+          </nav>
+
+          <nav class="links">
+            <a href="#" class="links__ele">home</a>
+            <a href="#" class="links__ele">pots</a>
+            <!-- <a href="#" class="links__ele">contact</a> -->
+            <a href="#" class="links__ele">plants</a>
+          </nav>
+
+          <nav class="user-nav">
+            <span id="cart-items" class="cart-items"></span>
+            <a href="">
+              <img src="icons/cart.svg" alt="user cart" class="nav--icons" />
+            </a>
+            <a href="">
+              <img src="icons/heart.svg" alt="wishlist" class="nav--icons" />
+            </a>
+            <a href="">
+              <img src="icons/user-avatar.svg" alt="user" class="nav--icons" />
+            </a>
+          </nav>
+
+          <img
+            src="icons/hamburger-2.svg"
+            alt="menu-bar"
+            class="hamburger icons"
+            id="product-hamburger"
+          />
+        </header>
+
+        <section class="overview-content">
+          <img src="img/plant-3.jpg" alt="product-image" class="overview-content__image" />
+          <div class="overview-detail">
+            <h1 class="overview-detail__title">Tulsi marigold plant</h1>
+            <h2 class="overview-detail__cat">Air purifier</h2>
+            <h2 class="overview-detail__price">₹ 299</h2>
+            <div class="overview-minmax">
+              <button class="items__feature__btn btn--decrement">&minus;</button>
+              <input type="number" class="product-count" min="1" max="10" />
+              <button class="items__feature__btn btn--increment">&plus;</button>
+            </div>
+            <span>&starf; Free delivery for all products above ₹ 499</span>
+            <button class="checkout-btn btn-cart">Add to cart</button>
+            <button class="checkout-btn">checkout</button>
+          </div>
+          <div class="overview-info">
+            <h2 class="overview-info__title">Product descritpion</h2>
+            <p class="overview-info__para">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis earum tempore quos
+              odit qui laudantium voluptatum, quibusdam perferendis, ipsa ex fugiat aut perspiciatis
+              quisquam quidem rem. Veritatis, distinctio labore commodi nisi saepe quaerat illum
+              sunt. Rerum obcaecati eligendi sapiente quas!
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <div class="menu product--menu hidden-helper" id="product-menu">
+        <img src="icons/cancel.svg" alt="close" class="menu__cancel icons" id="cancel-hamburger" />
+        <a href="#" class="menu-link">
+          <img src="icons/home.svg" alt="home" class="icons--mini" />
+          <span>Home</span>
+        </a>
+        <a href="#" class="menu-link">
+          <img src="icons/pot.svg" alt="pot" class="icons--mini" />
+          <span>Pots</span>
+        </a>
+        <!-- <a href="#" class="menu-link">
+          <img src="icons/contact.svg" alt="contact" class="icons--mini" />
+          <span>Contact</span>
+        </a> -->
+
+        <nav class="user-nav menu-nav">
+          <a href="#" class="menu-link">
+            <img src="icons/cart-2.svg" alt="user cart" class="icons--mini" />
+            <span>Shopping cart</span>
+          </a>
+          <a href="#" class="menu-link">
+            <img src="icons/heart-2.svg" alt="wishlist" class="icons--mini" />
+            <span>My favourites</span>
+          </a>
+          <a href="#" class="menu-link">
+            <img src="icons/user-avatar.svg" alt="user" class="icons--mini" />
+            <span>My account</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </body>
+</html>

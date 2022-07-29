@@ -1,0 +1,105 @@
+@use "_helper" as style;
+
+.product-overview {
+  @include style.responsive();
+
+  & .header--prod {
+    border-bottom: 0;
+  }
+}
+
+.overview-content {
+  width: 100%;
+  margin: 2em 0;
+  display: grid;
+  gap: 3em;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(3, auto);
+
+  @include style.desktop {
+    width: 80%;
+    margin: 4em auto;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+  }
+
+  &__image {
+    width: 100%;
+    max-height: 30em;
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+
+    @include style.desktop {
+      width: 30em;
+      height: 30em;
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+      justify-self: center;
+    }
+  }
+}
+
+.overview-detail {
+  color: style.color(typo-clr);
+  grid-column: 1 / -1;
+  grid-row: 3 / -1;
+
+  @include style.desktop {
+    grid-column: 2 / -1;
+    grid-row: 1 / 2;
+    justify-self: center;
+  }
+
+  &__title {
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+    @include style.font(style.color(typo-clr), clamp(1.5rem, 5vw, 2.25rem), style.font(bold));
+  }
+
+  &__cat {
+    margin-bottom: 1.5rem;
+    @include style.font(style.color(typo-clr), 1.125rem, style.font(medium));
+  }
+
+  &__price {
+    @include style.font(style.color(accent-dark), 1.5rem, style.font(bold));
+  }
+
+  & span {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.btn-cart {
+  background-color: transparent;
+  border: 2px solid style.color(accent-clr);
+  color: style.color(accent-clr);
+  margin-bottom: 1.5rem;
+
+  &:hover,
+  &:focus {
+    background-color: style.color(accent-clr);
+    color: style.color(white-clr);
+  }
+}
+
+.overview-info {
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+  color: style.color(typo-clr);
+
+  @include style.desktop {
+    grid-column: 1 / -1;
+    grid-row: 2 / -1;
+  }
+
+  &__title {
+    margin-bottom: 1rem;
+  }
+}
+
+.overview-minmax {
+  margin: 1.5rem 0;
+}

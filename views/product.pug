@@ -1,0 +1,52 @@
+extends base
+
+
+block content
+  .wrapper
+    main.product-overview
+      header.header--prod
+        nav.nav--logo
+          a.nav__ele.header--logo(href='/')
+            img.header__logo.icons(src='/icons/green-icon.svg' alt='GreenBuy logo')
+            span.logo-title GreenBuy
+        nav.links
+          a.links__ele(href='/') home
+          a.links__ele(href='/pots') pots
+          // <a href="#" class="links__ele">contact</a>
+          a.links__ele(href='/products') plants
+
+        if user 
+          nav.user-nav
+            span#cart-items.cart-items
+            a(href='/cart')
+              img.nav--icons(src='/icons/cart.svg' alt='user cart' title='Shopping cart')
+            a(href='/wishlist')
+              img.nav--icons(src='/icons/heart.svg' alt='wishlist' title='Wishlist')
+            a(href='/my-account')
+              img.nav--icons(src='/icons/user-avatar.svg' alt='user' title='Profile')
+        else 
+          a.login__user.user__ele(href='/login') login 
+
+        img#product-hamburger.hamburger.icons(src='/icons/hamburger-2.svg' alt='menu-bar')
+      section.overview-content
+        img.overview-content__image(src=`/img/${product.images[0]}` alt=`${product.plantName}`)
+        #overview.overview-detail(data-prodid=`${product._id}`)
+          h1.overview-detail__title= product.plantName
+          h2.overview-detail__cat= product.plantType
+          h2.overview-detail__price= `₹${product.price}`
+          div#product-counter.overview-minmax
+            button.items__feature__btn.btn--decrement &minus;
+            input.product-count(type='number' min='1' max='10' value="1")
+            button.items__feature__btn.btn--increment &plus;
+          span &starf; Free delivery for all products above &#x20B9; 499
+          if user
+            button#addToCart.checkout-btn.btn-cart Add to cart
+            button#checkoutBtn.checkout-btn checkout
+          else
+            a.checkout-btn.btn-cart(href="/login") Add to cart 
+            a.checkout-btn(href="/login") checkout
+        .overview-info
+          h2.overview-info__title Product descritpion
+          p.overview-info__para= product.about
+    include _menu
+

@@ -1,0 +1,355 @@
+[
+  {
+    "productName": "Peace Lily, Spathiphyllum",
+    "about": "A long-time favourite of those with a green thumb and even those without, Spathiphyllum, commonly known as the peace lily, is an adaptable and low-maintenance houseplant. Peace lilies are not true lilies (Lilium spp.) at all, but rather a member of the Araceae family. The standard peace lily can grow to 24-40 inches and deluxe plants can grow to 32-50 inches. This tropical shade-loving plant helps cleanse the air we breathe. While we all appreciate cleaner, oxygenated air, it’s also the easy Peace Lily care, resiliency and forgiving nature that makes them such popular houseplants.",
+    "images": ["peace-lily-1.jpg", "peace-lily-2.jpg", "peace-lily-3.jpg", "peace-lily-4.jpg"],
+    "price": "399",
+    "productType": "Air purifier",
+    "ratings": "4.4"
+  },
+
+  {
+    "productName": "Spider Plant Vareigated",
+    "about": "Spider plant is an excellent, low maintenance, air purifying houseplant for the amateur houseplant parent. Spider Plant, belonging to family Asparagaceae, are some of the the easiest air-purifying plant you can grow if you are the forgetful type. The major pollutants it removes are Benzene, Toluene, Pentane, Xylene and Formaldehyde, some of which are major contributors in the printing and rubbing industries. Apart from that, these compact houseplants do not require a lot of attention and can be used in decorating workspace and corner tables at home.",
+    "images": [
+      "spider-plant-1.jpg",
+      "spider-plant-2.jpg",
+      "spider-plant-3.jpg",
+      "spider-plant-4.jpg"
+    ],
+    "price": "499",
+    "productType": "Air purifier",
+    "ratings": "4.3"
+  },
+
+  {
+    "productName": "Ficus Starlight",
+    "about": "Ficus Benjamina Starlight belonging to the family Moraceae is an evergreen shrub and grows predominantly in the tropical belt in India, China, Malaysia and Australia. The plant has dark green, light green or creamy white, shiny leaves and grows from 200 to 300 cm, rarely higher. The leaf shapes: oval, obovate, ovate-lanceolate with smooth or curly edges with creamy white to yellowish flowers in summer. It is a good decision to grow this plant at home. Even if you don’t know anything about growing Ficus Benjamina, it isn’t a disaster. It is a fairly moderate maintenance plant and thrives well indoors.",
+    "images": [
+      "ficus-starlight-1.jpg",
+      "ficus-starlight-2.jpg",
+      "ficus-starlight-3.jpg",
+      "ficus-starlight-4.jpg"
+    ],
+    "price": "459",
+    "productType": "Air purifier",
+    "ratings": "4.4"
+  },
+
+  {
+    "productName": "Bamboo Palm, Chamaedorea Plant",
+    "about": "Bamboo Palm is the best option for people who want a warm atmosphere at a low light space filled with a plant. Bamboo Palm, unlike its other Palm friends, thrives very well in low light areas and grows even taller if they get more light. An extremely low maintenance and neglect tolerant plant, this is an excellent choice for new plant parents who want to decorate their homes with leafy friends. The leaves are dark green and give off a tropical vibe acting as beautiful decor options. ",
+    "images": ["bamboo-palm-1.jpg", "bamboo-palm-2.jpg", "bamboo-palm-3.jpg", "bamboo-palm-4.jpg"],
+    "price": "659",
+    "productType": "Air purifier",
+    "ratings": "4.7"
+  },
+
+  {
+    "productName": " Rubber Tree, Ficus Elastica Plant",
+    "about": "Rubber Plant is scientifically known as Ficus Elastica. It is commonly known as Indian Rubber Bush, Ficus decora or India Rubber Tree. It is a part of the Moraceae family. The plant is native to Southeast Asia. It is a low maintenance plant as it requires minimal care. The plant has wide, oval-shaped leaves that are widely used to decorate the home or workspace.",
+    "images": ["rubber-tree-1.jpg", "rubber-tree-2.jpg", "rubber-tree-3.jpg", "rubber-tree-4.jpg"],
+    "price": "599",
+    "productType": "Air purifier",
+    "ratings": "4.4"
+  },
+
+  {
+    "productName": "Flamingo Lily Plant",
+    "about": "Anthurium scherzerianum and Anthurium andraeanum lend their common name, flamingo lily, from their brightly colored waxy flowers. They are appreciated for their exotic looks and, when their needs are met, can bloom year-round. A great choice for any houseplant lover looking for a pop of color in their home. Give this plant a spot in front of a window that receives bright light but no sun. If you only have sunny windowsills to offer, place a sheer curtain between your flamingo lily and the window if you feel like things get a little too intense.",
+    "images": [
+      "flamingo-lily-1.jpg",
+      "flamingo-lily-2.jpg",
+      "flamingo-lily-3.jpg",
+      "flamingo-lily-4.jpg"
+    ],
+    "price": "659",
+    "productType": "Air purifier",
+    "ratings": "4.9"
+  },
+
+  {
+    "productName": "Umbrella Plant",
+    "about": "An adorable pet plant for your floral collection, and an amateur gardener’s most obedient subject, the umbrella tree is one houseplant you didn’t know you wanted, but a houseplant you would love to keep at your place. The name comes from the charming shape of its foliage, the umbrella plant gains its demand because of being very adaptable to growing in different types of conditions, and what’s more! It even takes neglect sportively. Scientifically known as Schefflera Arboricola, belonging to the Araliaceae family, it’s more commonly called a Dwarf Umbrella Tree, with a dwarf suffix attached to it for one variety. Its place of origin is not one, but two. Australia and Taiwan. Tolerating temperatures of 60 to 70°F best, the scale of tolerance starts from 15°F. ",
+    "images": [
+      "umbrella-plant-1.jpg",
+      "umbrella-plant-2.jpg",
+      "umbrella-plant-3.jpg",
+      "umbrella-plant-4.jpg"
+    ],
+    "price": "369",
+    "productType": "Easy care",
+    "ratings": "3.4"
+  },
+  {
+    "productName": "Snake Plant",
+    "about": "Variegated Snake Plant is scientifically known as Sansevieria trifasciata 'Laurentii'. It is a part of the Asparagaceae family. It is commonly known as   Snake plant, Stripped Snake plant, Striped Mother-in-law's Tongue, Goldband Sansevieria, the tongue of a devil, Bow String Hemp. The plant is mainly originated in tropical West Africa from Nigeria east to the Congo. Sansevieria trifasciata laurentii is a succulent plant that has leathery texture, thick, hard, sword-shaped leaves with pointed ends.",
+    "images": ["snake-plant-1.jpg", "snake-plant-2.jpg", "snake-plant-3.jpg", "snake-plant-4.jpg"],
+    "price": "499",
+    "productType": "Easy care",
+    "ratings": "3.8"
+  },
+  {
+    "productName": "Chinese Evergreen Plant",
+    "about": "Aglaonema Costatum or Chinese Evergreen plant is one of those plants that is a must in your office table or home work stations. It belongs to the Arum family (Araceae). The plant has beautiful leaves that are a treat for your eyes. Being native to tropical and sub-tropical regions of Asia, they can survive well in humid Indian weather conditions. They are generally known as Chinese evergreens.",
+    "images": [
+      "chinese-evergreen-1.jpg",
+      "chinese-evergreen-2.jpg",
+      "chinese-evergreen-3.jpg",
+      "chinese-evergreen-4.jpg"
+    ],
+    "price": "599",
+    "productType": "Easy care",
+    "ratings": "3.6"
+  },
+  {
+    "productName": "Jade Plant",
+    "about": "Jade, also known as Crassula Ovata is an extremely low maintenance, sun-loving succulent. The plant is potted in a hanging pot, giving it a dropping appearance. Its origin lies in the southern parts of Africa and Mozambique. It is an evergreen plant & has big, thick & smooth green leaves. At times you will also find yellow colouration on the leaf giving it a perfect Japanese mini garden look. ",
+    "images": ["jade-plant-1.jpg", "jade-plant-2.jpg", "jade-plant-3.jpg", "jade-plant-4.jpg"],
+    "price": "669",
+    "productType": "Easy care",
+    "ratings": "4.2"
+  },
+  {
+    "productName": "Cactus Plant",
+    "about": "A cactus is a great addition to the home thanks to its striking shape, size and flowers. Seeing as no cactus plant is the same, this houseplant is a unique, decorative way to add interest to your living space, whether it's perched on your windowsill or styled on a shelf. Although slow-growing, a cactus plant is fairly self-sustaining as it stores moisture in its roots, leaves and stems, and so largely regulates its own food intake. A cactus plant likes a light, airy and warm spot – but not too hot, around 18°C is ideal – and can cope well in direct sunlight.",
+    "images": [
+      "cactus-plant-1.jpg",
+      "cactus-plant-2.jpg",
+      "cactus-plant-3.jpg",
+      "cactus-plant-4.jpg"
+    ],
+    "price": "279",
+    "productType": "Easy care",
+    "ratings": "4.1"
+  },
+  {
+    "productName": "Bromeliads plant",
+    "about": "The showy bromeliad may look difficult to grow but it can easily adapt to average home conditions with its astonishing array of colors and textures. Although many do have very splashy flower displays, bromeliads are just as popular as beautiful foliage plants with leaves in red, green, purple, orange, and yellow colors and with bands, stripes, spots, and other features. Bromeliads are relatively slow-growing plants that take one to three years to mature into flowering plants.",
+    "images": [
+      "bromeliads-plant-1.jpg",
+      "bromeliads-plant-2.jpg",
+      "bromeliads-plant-3.jpg",
+      "bromeliads-plant-4.jpg"
+    ],
+    "price": "899",
+    "productType": "Easy care",
+    "ratings": "4.8"
+  },
+  {
+    "productName": "Tulsi plant",
+    "about": "Tulsi is one of the most abundant herbs found and is grown widely for medicine as well as worship. Tulsi has found its significance in the Indian Mythology in Hinduism and is one of the essential elements to be used in traditional medicine and Ayurveda. It is a powerhouse of medicinal properties to cure a number of ailments. The plant has a strong fragrance and grows 30-60 cm tall.",
+    "images": ["tulsi-plant-1.jpg", "tulsi-plant-2.jpg", "tulsi-plant-3.jpg", "tulsi-plant-4.jpg"],
+    "price": "159",
+    "productType": "Medicinal herbal",
+    "ratings": "4.7"
+  },
+  {
+    "productName": "Aloe Vera plant",
+    "about": "Aloe Vera belonging to family Asphodelaceae, is an easy, attractive succulent that makes for a great indoor companion. Aloe Vera plants are useful, too, as the juice from their leaves can be used to relieve pain from scrapes and burns when applied topically. Aloe Vera is a succulent plant species of the genus Aloe. The plant is stemless or very short-stemmed with thick, greenish, fleshy leaves that fan out from the plant’s central stem. Keep the Aloe Vera plant in a pot near a kitchen window for periodic use but avoid having the sun’s rays hit it directly.",
+    "images": ["aloe-vera-1.jpg", "aloe-vera-2.jpg", "aloe-vera-3.jpg", "aloe-vera-4.jpg"],
+    "price": "259",
+    "productType": "Medicinal herbal",
+    "ratings": "3.1"
+  },
+  {
+    "productName": "Rosemary plant",
+    "about": "Rosemary is a globally used herb, which has paved its way as a kitchen essential for herb enthusiasts. It is an aromatic shrub and blooms white, purple and pink flowers during spring and summer. The plant is a very versatile culinary seasoning and can be used in a variety of cuisines. Apart from that, the plant also has a lot of medicinal properties. The plant is rich in antioxidants and is also used as an anti-inflammatory agent.",
+    "images": [
+      "rosemary-plant-1.jpg",
+      "rosemary-plant-2.jpg",
+      "rosemary-plant-3.jpg",
+      "rosemary-plant-4.jpg"
+    ],
+    "price": "259",
+    "productType": "Medicinal herbal",
+    "ratings": "4.1"
+  },
+  {
+    "productName": "Lavender plant",
+    "about": "Lavender is an herb native to northern Africa and the mountainous regions of the Mediterranean. Lavender is also grown for the production of its essential oil, which comes from the distillation of the flower spikes of certain lavender species. The oil has cosmetic uses, and it is believed to have some medicinal uses. Lavender essential oil, in contrast to the plant form, is toxic when swallowed. The herb is highly regarded for skin and beauty and is commonly used in fragrances and shampoos to help purify the skin. It can be purchased over-the-counter (OTC) from drugstores, and some versions are used to add flavor to baked goods and foods.",
+    "images": [
+      "lavender-plant-1.jpg",
+      "lavender-plant-2.jpg",
+      "lavender-plant-3.jpg",
+      "lavender-plant-4.jpg"
+    ],
+    "price": "459",
+    "productType": "Medicinal herbal",
+    "ratings": "2.9"
+  },
+  {
+    "productName": "Calendula plant",
+    "about": "Calendula officinalis is a short-lived aromatic herbaceous perennial, growing to 80cm (31in) tall, with sparsely branched lax or erect stems. The leaves are oblong-lance. The disc florets are tubular and hermaphrodite, and generally of a more intense orange olate, 5–17cm (2–7in) long, hairy on both sides, and with margins entire or occasionally waved or weakly toothed. The inflorescences are yellow, comprising a thick capitulum or flower head 4–7cm diameter surrounded by two rows of hairy bracts; in the wild plant they have a single ring of ray florets surrounding the central disc florets-yellow colour than the female, tridentate, peripheral ray florets.",
+    "images": [
+      "calendula-plant-1.jpg",
+      "calendula-plant-2.jpg",
+      "calendula-plant-3.jpg",
+      "calendula-plant-4.jpg"
+    ],
+    "price": "659",
+    "productType": "Medicinal herbal",
+    "ratings": "2.9"
+  },
+  {
+    "productName": "Pepper mint plant",
+    "about": "Mint is a very aromatic herb and is widely used in cuisines and . Mint is native to Europe, Asia, Australia, South Africa and North America is one of the globally used herb in various cuisines. A characteristic feature of Mint is its square stems, and its sweet-pungent smell on bruising the stem or leaves. They are also excellent kitchen companions, and are used in herbal teas and medicines, garden accents and ground cover. Mint grows very widely, so if plants, the spread should be checked.",
+    "images": ["mint-plant-1.jpg", "mint-plant-2.jpg", "mint-plant-3.jpg", "mint-plant-4.jpg"],
+    "price": "199",
+    "productType": "Medicinal herbal",
+    "ratings": "3.9"
+  },
+  {
+    "productName": "Poinsettia, Christmas Flower Plant",
+    "about": "One of the top choices for Christmas decorations is Poinsettia or popularly known as Christmas Flower. These plants are a commercial favorites of the diverse spurge family. Native to Mexico, these plants are winter-favorites in few major counties in the world. The most widely available poinsettia plant is red but, they also bloom in beautiful pinks, oranges, creams and whites. They are also really easy to care and require moderate efforts. They are excellent decorative plants and are widely used for ornamental purposes.",
+    "images": [
+      "poinsettia-plant-1.jpg",
+      "poinsettia-plant-2.jpg",
+      "poinsettia-plant-3.jpg",
+      "poinsettia-plant-4.jpg"
+    ],
+    "price": "359",
+    "productType": "Flowering plant",
+    "ratings": "4.0"
+  },
+  {
+    "productName": "Marigold plant",
+    "about": "Marigold flowers are some of the most grown flowers especially during winters throughout India. These are some of the non-fussy, very easy to grow plants, that bloom flowers in beautiful shades of yellow and orange. One of the well-known plants as natural insect-repellent as they common tackle the nematode problems in the soil. They do quite well in potted conditions and hence are a popular choice as houseplants. Due to their self-seeding ability, they might go dormant for a season but do bloom the next season on their own. They bring a pop of colour to your garden.",
+    "images": [
+      "marigold-plant-1.jpg",
+      "marigold-plant-2.jpg",
+      "marigold-plant-3.jpg",
+      "marigold-plant-4.jpg"
+    ],
+    "price": "359",
+    "productType": "Flowering plant",
+    "ratings": "4.5"
+  },
+  {
+    "productName": "Jasmine Plant, Mogra",
+    "about": "Jasmine Plant is also commonly known as Mogra in large parts of India. Belonging to the Oleaceae family, Jasmine plants are mostly grown as shrubs and vines. Most jasmine plants are found in tropical to sub-tropical climates, although a few may grow in temperate climates. Jasmines are widely cultivated for the characteristic fragrance of their flowers and are enjoyed in the garden, as a houseplant, and as vines. The flowers are worn by women in their hair in South East Asian countries.",
+    "images": [
+      "jasmine-plant-1.jpg",
+      "jasmine-plant-2.jpg",
+      "jasmine-plant-3.jpg",
+      "jasmine-plant-4.jpg"
+    ],
+    "price": "269",
+    "productType": "Flowering plant",
+    "ratings": "4.5"
+  },
+  {
+    "productName": "Red rose plant",
+    "about": "Belonging to family Rosaceae, Roses are primarily native to the temperate regions of the Northern Hemisphere and are cultivated for their beautiful flowers, which range in color from white through various tones of yellow and pink to dark crimson and maroon, and most have a delightful fragrance, which varies according to the variety. They are very resilient plants and with seasonal pruning thrives the best.",
+    "images": ["rose-plant-1.jpg", "rose-plant-2.jpg", "rose-plant-3.jpg", "rose-plant-4.jpg"],
+    "price": "269",
+    "productType": "Flowering plant",
+    "ratings": "4.6"
+  },
+  {
+    "productName": "Petunia Purple Plant",
+    "about": "Petunias are some of the popular options for flowering plant because of their extended flower bloom period. Though they tend to get a bit leggy during the summer season, they pick up growth and start growing well during winters. They are popular choices as container plants, hanging baskets and even lawn plants as they bring a dash of colour to a neutral setting. These are also good options as border plants as they are non-fussy and require moderate care for growth and maintenance. They are mostly used for ornamental and decoration purposes.",
+    "images": [
+      "petunia-plant-1.jpg",
+      "petunia-plant-2.jpg",
+      "petunia-plant-3.jpg",
+      "petunia-plant-4.jpg"
+    ],
+    "price": "499",
+    "productType": "Flowering plant",
+    "ratings": "4.7"
+  },
+  {
+    "productName": "Ixora Coccinea Plant",
+    "about": "Ixora plant is one of the most distinct monsoon-winter durable plants due to its large corymb of colourful flowers.  The plants bear bright florets of clustered flowers with a range of colours between red, orange, pink and yellow, earning it the names of Jungle Flame or Flame of the woods. These are fuss-free plants, have a moderate bloom period, and bloom with minimal care and maintenance. The plant grows slowly, making it an excellent choice as a potted houseplant, especially if you have apartment or balcony gardens.",
+    "images": ["ixora-plant-1.jpg", "ixora-plant-2.jpg", "ixora-plant-3.jpg", "ixora-plant-4.jpg"],
+    "price": "499",
+    "productType": "Flowering plant",
+    "ratings": "4.5"
+  },
+
+  {
+    "productName": "Designed clay pot",
+    "images": ["pot-1.jpg"],
+    "ratings": "4.5",
+    "productType": "Natural pot",
+    "price": "279"
+  },
+  {
+    "productName": "Mini clay pot",
+    "images": ["pot-2.jpg"],
+    "ratings": "3.2",
+    "productType": "Natural pot",
+    "price": "279"
+  },
+  {
+    "productName": "Premium ceramic pot",
+    "images": ["pot-3.jpg"],
+    "ratings": "3.3",
+    "productType": "Natural pot",
+    "price": "299"
+  },
+  {
+    "productName": "Ceramic square pot",
+    "images": ["pot-4.jpg"],
+    "ratings": "4.4",
+    "productType": "Natural pot",
+    "price": "299"
+  },
+  {
+    "productName": "Gray stone pot",
+    "images": ["pot-5.jpg"],
+    "ratings": "3.1",
+    "productType": "Natural pot",
+    "price": "179"
+  },
+  {
+    "productName": "Wodden square pot",
+    "images": ["pot-6.jpg"],
+    "ratings": "4.0",
+    "productType": "Natural pot",
+    "price": "319"
+  },
+  {
+    "productName": "Ceramic and clay pot",
+    "images": ["pot-7.jpg"],
+    "ratings": "4.1",
+    "productType": "Natural pot",
+    "price": "259"
+  },
+  {
+    "productName": "Premium clay ceramic pot",
+    "images": ["pot-8.jpg"],
+    "ratings": "4.8",
+    "productType": "Natural pot",
+    "price": "299"
+  },
+  {
+    "productName": "Premium designed clay pot",
+    "images": ["pot-9.jpg"],
+    "ratings": "4.7",
+    "productType": "Natural pot",
+    "price": "199"
+  },
+  {
+    "productName": "Natural pot",
+    "images": ["pot-10.jpg"],
+    "ratings": "3.8",
+    "productType": "Natural pot",
+    "price": "199"
+  },
+  {
+    "productName": "Premium polished ceramic",
+    "images": ["pot-11.jpg"],
+    "ratings": "3.9",
+    "productType": "Natural pot",
+    "price": "259"
+  },
+  {
+    "productName": "Polished clay pot",
+    "images": ["pot-12.jpg"],
+    "ratings": "3.4",
+    "productType": "Natural pot",
+    "price": "279"
+  }
+]

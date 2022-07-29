@@ -1,0 +1,180 @@
+extends base
+
+
+block content
+  .wrapper
+    main#top.main
+      .main-image
+        //- img#main-image.main-image__image(src='/img/leaf-1.jpg' alt='main-image')
+        dif.main-image__image
+      header#index-header.header
+        nav.nav--logo
+          a.nav__ele.header--logo(href='/')
+            img.header__logo.icons(src='/icons/icon.svg' alt='GreenBuy logo')
+            span GreenBuy
+        nav.nav
+          a.nav__ele(href='/products') plants
+          a.nav__ele(href='/pots') pots
+          // <a href="#" class="nav__ele">contact</a>
+          button#categories-btn.categories.icons--icon
+            | Categories
+            span
+              img.icons--mini.chevorn(src='/icons/chevorn.svg' alt='arrow down')
+        nav#categories-tooltip.tooltip-helper.tooltip
+          div
+            h2.tooltip-title Goto
+            a(href='#popular-products') popular products
+            a(href='#exclusive-products') pots and plants
+          div
+            h2.tooltip-title Products
+            a(href='/products') Air purifiers
+            a(href='/products') Medicinal plants
+            a(href='/products') Easy to care
+            a(href='/products') Flowering plants
+        if user 
+          a#user-login.nav__ele.user__ele(href='/my-account')
+            span= user.name.split(" ")[0]
+            img.icons.user--img(src=`/img/users/${user.photo}` alt=`${user.name}`)
+        else
+          nav.nav
+            a.nav__ele.icons--icon(href='/login')
+              | login 
+              span
+                img.icons--mini(src='/icons/login.svg' alt='login')
+            a.nav__ele.icons--icon(href='/signup')
+              | signup 
+              span
+                img.icons--mini(src='/icons/signup.svg' alt='login')
+        img#product-hamburger.hamburger.icons(src='/icons/hamburger.svg' alt='menu-bar')
+      .content
+        span.content__title.title--sub be natural
+        h1#main-title.content__title
+          | easy to care plants with nutrients rich soil
+        a.content__btn(href='/products') Explore products
+    section.products
+      .products-container
+        #popular-products.popular-products.section
+          .product-content
+            h1.product-content__title Popular products
+            a.product-content__btn(href='/products') see all
+          .plant-image
+            figure.plant
+              a(href='/products')
+                img.plant__img(src='/img/plant-1.jpg' alt='Easy to care plant')
+                figcaption.figure
+                  h2.figure__title Easy to care
+                  h2.figure__title.figure--rating
+                    | &bigstar;&bigstar;&bigstar;&bigstar;&star;
+            figure.plant
+              a(href='/products')
+                img.plant__img(src='/img/plant-2.jpg' alt='Medicinal and herbal plant')
+                figcaption.figure
+                  h2.figure__title Medicinal and herbal plant
+                  h2.figure__title.figure--rating
+                    | &bigstar;&bigstar;&bigstar;&bigstar;&bigstar;
+            figure.plant
+              a(href='/products')
+                img.plant__img(src='/img/plant-3.jpg' alt='Air purifiers plant')
+                figcaption.figure
+                  h2.figure__title Air purifiers
+                  h2.figure__title.figure--rating
+                    | &bigstar;&bigstar;&bigstar;&bigstar;&star;
+            figure.plant
+              a(href='/products')
+                img.plant__img(src='/img/plant-4.jpg' alt='Flowering plants')
+                figcaption.figure
+                  h2.figure__title Flowering plants
+                  h2.figure__title.figure--rating
+                    | &bigstar;&bigstar;&bigstar;&bigstar;&bigstar;
+        #exclusive-products.exclusive-product.section
+          .product-content
+            h1.product-content__title Exclusive pots and plants
+            a.product-content__btn(href='/pots') see all
+          .exclusive-plants
+            figure.exclusive-plant
+              a(href='/pots')
+                img.exclusive-plant__img(src='/img/home-pot-1.jpg' alt='Exclusive pots and plants')
+            figure.exclusive-plant
+              a(href='/pots')
+                img.exclusive-plant__img(src='/img/home-pot-2.jpg' alt='Exclusive pots and plants')
+            figure.exclusive-plant.exclusive--mini
+              a(href='/pots')
+                img.exclusive-plant__img(src='/img/home-pot-3.jpg' alt='Exclusive pots and plants')
+            figure.exclusive-plant.exclusive--mini
+              a(href='/pots')
+                img.exclusive-plant__img(src='/img/home-pot-4.jpg' alt='Exclusive pots and plants')
+    section.about.section
+      .facilities
+        img.facilities__img(src='/icons/phone.svg' alt='24/7 support')
+        h2.facilities__title Customer service
+        p.facilities__para
+          | Easily contact us with our helpline We provide 24 / 7 customer service.
+      .facilities
+        img.facilities__img(src='/icons/truck.svg' alt='Free delivery')
+        h2.facilities__title Free delivery
+        p.facilities__para
+          | No shipping charges above order $999. An amazing place for better products.
+      .facilities
+        img.facilities__img(src='/icons/time.svg' alt='Easy return')
+        h2.facilities__title 7 days return
+        p.facilities__para
+          | Easy 7 day return policy, with no extra charges and 100% money back gurantee.
+    footer.footer.section
+      .footer-container
+        nav.nav--logo
+          a.nav__ele.header--logo(href='/')
+            img.header__logo.icons(src='/icons/icon.svg' alt='GreenBuy logo')
+            span GreenBuy
+        nav.nav
+          a.nav__ele(href='/products') plants
+          a.nav__ele(href='/pots') pots
+          a.nav__ele(href='/') contact
+        if !user
+          nav.nav
+            a.nav__ele(href='/login') login
+            a.nav__ele(href='/signup') signup
+        else 
+          nav.nav
+            a.nav__ele(href="/") Welcome user!
+
+        nav.social-links
+          a(href='#top')
+            img.icons--mini(src='/icons/instagram.svg' alt='instagram' title='instagram')
+          a(href='#top')
+            img.icons--mini(src='/icons/twitter.svg' alt='instagram' title='twitter')
+        nav.top
+          a(href='#top')
+            img.icons--mini(src='/icons/arrow.svg' alt='top' title='go top')
+        span.copyright &copy; Copyright. All rights reserved
+  #product-menu.menu.hidden-helper
+    img#cancel-hamburger.menu__cancel.icons(src='icons/cancel.svg' alt='close')
+    a.menu-link(href='/')
+      img.icons--mini(src='icons/home.svg' alt='home')
+      span Home
+    a.menu-link(href='/pots')
+      img.icons--mini(src='icons/pot.svg' alt='pot')
+      span Pots
+    //
+      <a href="#" class="menu-link">
+      <img src="icons/contact.svg" alt="contact" class="icons--mini" />
+      <span>Contact</span>
+      </a>
+    .menu-categories
+      h2 Categories &blacktriangledown;
+      a.menu-link(href='/products') Air purifiers
+      a.menu-link(href='/products') Medicinal plants
+      a.menu-link(href='/products') Easy to care
+      a.menu-link(href='/products') Flowering plants
+    if user 
+      a.menu-link.user__user(href='/my-account')
+        img.icons--mini.user--img(src=`/img/users/${user.photo}` alt=`${user.name}`)
+        span My Account
+      a#logout-user.menu-link.user__user(href='#')
+        img.icons--mini(src='/icons/logout-2.svg' alt=`logout`)
+        span Logout
+    else
+      .auth
+        a.menu-link(href='/login') login
+        a.menu-link(href='/signup') Signup      
+
+

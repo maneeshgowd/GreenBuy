@@ -1,0 +1,147 @@
+@use "_helper" as style;
+
+.header {
+  @include style.responsive();
+  @include style.flex(space-between);
+  min-height: 10vh;
+}
+
+.logo-title {
+  color: style.color(accent-clr);
+}
+
+.sign--btn {
+  @include style.button(
+    style.color(accent-clr),
+    style.color(white-clr),
+    0.6rem,
+    1rem,
+    0.4rem,
+    0.8rem
+  );
+}
+
+.greenbuy-watermark {
+  width: 50rem;
+  opacity: 0.15;
+  position: absolute;
+  bottom: -5em;
+  left: -10em;
+  z-index: -1;
+
+  @include style.tablet {
+    bottom: -10em;
+    left: -15em;
+  }
+}
+
+.form {
+  width: 100%;
+  max-width: 25em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 1.5em;
+  border-radius: style.$radius;
+  transform: translate(-50%, -50%);
+  background-color: style.color(white-clr);
+  filter: drop-shadow(0 20px 20px rgba(style.color(accent-dark), 0.1));
+
+  &__title {
+    text-transform: capitalize;
+    font-size: 1.5rem;
+    color: style.color(accent-clr);
+    font-weight: style.font(bold);
+    margin-bottom: 1.5rem;
+  }
+
+  &__email,
+  &__pass,
+  &__name {
+    position: relative;
+  }
+
+  &__btn {
+    letter-spacing: 5px;
+    @include style.buttonStyle(style.color(accent-clr), style.color(white-clr));
+    @include style.buttonAnim();
+    width: 100%;
+  }
+}
+
+.form--signup {
+  max-width: 30em;
+}
+
+.pass__container {
+  width: 100%;
+  display: flex;
+  gap: 1em;
+
+  & .form__pass {
+    width: 100%;
+  }
+}
+
+.form input {
+  @include style.input();
+  margin-bottom: 2em;
+  transition: all 300ms ease;
+  border: 2px solid style.color(typo-clr);
+
+  &:invalid {
+    border: 2px solid style.color(invalid);
+  }
+
+  &:valid {
+    border: 2px solid style.color(accent-clr);
+  }
+}
+
+.auth-icon {
+  position: absolute;
+  top: 0.65em;
+  right: 0.5em;
+  cursor: pointer;
+}
+
+.sign-up {
+  display: block;
+  text-align: center;
+  margin: 2em 0 1em 0;
+  color: style.color(accent-clr);
+}
+
+input:focus + label,
+input:valid + label,
+input:invalid + label {
+  top: -0.6em;
+}
+
+.form label {
+  position: absolute;
+  top: 0.8em;
+  left: 1em;
+  font-size: clamp(0.6rem, 3vw, 0.9rem);
+  padding: 0 0.2em;
+  text-transform: capitalize;
+  color: style.color(accent-dark);
+  background-color: style.color(white-clr);
+  font-weight: style.font(semi-bold);
+  pointer-events: none;
+  transition: all 200ms ease;
+}
+
+.form--otp {
+  .otp {
+    letter-spacing: 0.5rem;
+    font-size: 1.125rem;
+  }
+
+  .otp-text {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+}
+
+ 

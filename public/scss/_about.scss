@@ -1,0 +1,351 @@
+@use "_helper" as style;
+
+.user {
+  margin: 2em 0;
+  width: 100%;
+  @include style.flex(center, center);
+  flex-direction: column;
+  gap: 1em;
+
+  @include style.tablet {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  &__overview,
+  &__edit {
+    padding: 1.5rem;
+    border-radius: style.$radius;
+    color: style.color(typo-clr);
+    background-color: style.color(white-clr);
+    filter: drop-shadow(0 20px 20px rgba(style.color(accent-dark), 0.1));
+  }
+}
+
+.user__overview {
+  width: 100%;
+  max-height: 60em;
+  @include style.flex(center, center);
+  flex-direction: column;
+  gap: 1em;
+
+  @include style.tablet {
+    width: auto;
+    min-width: clamp(18em, 20vw, 20em);
+  }
+
+  &__title {
+    font-size: clamp(1.125rem, 5vw, 1.5rem);
+  }
+}
+
+.user__avatar {
+  width: 100%;
+  @include style.flex();
+  flex-direction: column;
+
+  label {
+    margin-top: 1rem;
+    cursor: pointer;
+    position: relative;
+
+    & div {
+      background-color: style.color(invalid);
+      border-radius: 50%;
+      width: 1.5em;
+      height: 1.5em;
+      display: grid;
+      place-items: center;
+      filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.5));
+      position: absolute;
+      bottom: 2.5em;
+      right: -4em;
+    }
+  }
+
+  & .user__img {
+    width: 10em;
+    border-radius: 50%;
+  }
+
+  & .avatar {
+    position: absolute;
+    visibility: hidden;
+  }
+
+  .image-upload {
+    @include style.buttonStyle(style.color(accent-clr), style.color(white-clr), 0.4rem, 0.6rem);
+    font-size: 0.8rem;
+    font-weight: style.font(medium);
+  }
+}
+
+.user__info {
+  width: 100%;
+  margin-top: 1rem;
+  @include style.flex();
+  flex-direction: column;
+  gap: 1em;
+
+  &__title {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+
+  & .user__btn {
+    width: 100%;
+    height: 3em;
+    border: 2px dotted style.color(accent-clr);
+    border-radius: style.$radius;
+    position: relative;
+    transition: all 250ms ease;
+
+    &:hover {
+      background-color: style.color(accent-clr);
+      filter: drop-shadow(0 20px 20px rgba(style.color(accent-dark), 0.5));
+    }
+
+    &:hover > button {
+      color: style.color(white-clr);
+    }
+
+    &:hover > svg {
+      stroke: style.color(white-clr);
+    }
+
+    & button {
+      background: transparent;
+      @include style.font(style.color(accent-clr), 1rem, style.font(semi-bold));
+      text-transform: capitalize;
+      height: 3em;
+      width: 100%;
+      text-align: center;
+    }
+
+    & svg {
+      width: 1.5em;
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      transform: translate(-10%, -50%);
+      pointer-events: none;
+    }
+  }
+}
+
+.info--btn {
+  background-color: style.color(accent-clr);
+
+  & > * {
+    color: style.color(white-clr) !important;
+    stroke: style.color(white-clr) !important;
+  }
+}
+
+.user__edit {
+  width: 100%;
+  height: 38.7em;
+}
+
+.info--title {
+  margin-bottom: 3rem;
+}
+
+.info-form,
+.pass-info,
+.close-info {
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  display: grid;
+  gap: 1em;
+}
+
+.info-form {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(4, auto);
+
+  @include style.tablet {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  .form__name {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
+  .form__email {
+    grid-column: 2 / -1;
+    grid-row: 1/ 2;
+  }
+
+  .form__address {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+
+    & input {
+      min-height: 8em;
+    }
+  }
+}
+
+.close {
+  width: 100%;
+}
+
+.close-info {
+  margin-top: 6rem;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(2, auto);
+  justify-items: center;
+
+  & blockquote {
+    position: absolute;
+    top: 60%;
+  }
+
+  .form__password {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    width: 100%;
+    max-width: 30em;
+  }
+
+  & button {
+    grid-column: 1 / -1;
+    grid-row: 4 / -1;
+    width: 100%;
+    max-width: 30em;
+  }
+}
+
+.pass-info {
+  grid-template-columns: auto;
+  grid-template-rows: repeat(4, auto);
+  justify-items: center;
+
+  .form__currentPassword {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    width: 100%;
+    max-width: 30em;
+  }
+  .form__password {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    width: 100%;
+    max-width: 30em;
+  }
+  .form__repeatPassword {
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+    width: 100%;
+    max-width: 30em;
+  }
+
+  & button {
+    grid-column: 1 / -1;
+    grid-row: 4 / -1;
+    width: 100%;
+    max-width: 30em;
+  }
+}
+
+.form__name,
+.form__email,
+.form__address,
+.form__postcode,
+.form__location,
+.form__password,
+.form__currentPassword,
+.form__repeatPassword {
+  position: relative;
+}
+
+.about__btn {
+  grid-column: 2 / -1;
+  @include style.buttonStyle(style.color(accent-clr), style.color(white-clr));
+  @include style.buttonAnim();
+}
+
+.info-form input,
+.info-form textarea,
+.pass-info input,
+.close-info input {
+  @include style.input();
+  margin-bottom: 1rem;
+  transition: all 300ms ease;
+  border: 2px solid style.color(typo-clr);
+  background-color: lighten(style.color(accent-clr), 72%);
+
+  &:invalid {
+    border: 2px solid style.color(invalid);
+  }
+
+  &:valid {
+    border: 2px solid style.color(accent-clr);
+  }
+}
+
+input:focus + label,
+input:valid + label,
+input:invalid + label,
+textarea:focus + label,
+textarea:valid + label,
+textarea:invalid + label {
+  top: -0.6em;
+}
+
+.info-form label,
+.pass-info label,
+.close-info label {
+  position: absolute;
+  top: 0.8em;
+  left: 1em;
+  font-size: clamp(0.6rem, 3vw, 0.9rem);
+  padding: 0 0.2em;
+  text-transform: capitalize;
+  color: style.color(accent-dark);
+  background-color: style.color(white-clr);
+  font-weight: style.font(semi-bold);
+  pointer-events: none;
+  transition: all 200ms ease;
+}
+
+select[name="country"] {
+  @include style.input();
+}
+
+textarea {
+  resize: none;
+}
+
+.my-orders {
+  height: 36em;
+  overflow-y: scroll;
+
+  .orders {
+    @include style.flex(space-between);
+    width: 80%;
+    margin-inline: auto;
+    border-radius: style.$radius;
+    margin-bottom: 1.5rem;
+    border: 2px dotted style.color(accent-clr);
+    padding: 0.5rem;
+
+    & > img {
+      width: 3em;
+      height: 3em;
+    }
+
+    & > h2 {
+      font-size: clamp(0.8rem, 1.5vw, 1rem);
+      font-weight: style.font(semi-bold);
+    }
+
+    & .order--mini {
+      color: style.color(invalid);
+    }
+  }
+}

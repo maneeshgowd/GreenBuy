@@ -1,0 +1,82 @@
+extends base
+
+mixin star(color="#ffae00")
+    svg.icons--mini(xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.2" stroke="#4a4a4a" fill=color stroke-linecap="round" stroke-linejoin="round")
+        path(stroke="none" d="M0 0h24v24H0z" fill="none")
+        path(d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z")
+        //- path(d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253z")
+
+
+block content
+  .wrapper.cart-wrapper
+    main.cart-main
+      header.header--prod
+        nav.nav--logo
+          a.nav__ele.header--logo(href='/')
+            img.header__logo.icons(src='/icons/green-icon.svg' alt='GreenBuy logo')
+            span.logo-title GreenBuy
+        nav.links
+          a.links__ele(href='/') home
+          a.links__ele(href='/pots') pots
+          // <a href="#" class="links__ele">contact</a>
+          a.links__ele(href='/products') products
+        nav.user-nav
+          span#cart-items.cart-items
+          a(href='/cart')
+            img.nav--icons(src='/icons/cart.svg' title="Shopping cart" alt='user cart')
+          a(href='/my-account')
+            img.nav--icons(src='/icons/user-avatar.svg' title="Profile" alt='user')
+          a#logout-user(href='#')
+            img.nav--icons(src='/icons/logout.svg' title="Logout" alt='logout')
+        img#product-hamburger.hamburger.icons(src='/icons/hamburger-2.svg' alt='menu-bar')
+      section.purchased
+        #wishlist-counter.purchased-items
+          if wishlist.length !== 0
+            each item in wishlist[0].product
+              .items(data-prodid=`${item._id}` data-type="product")
+                img.items__image(src=`/img/${item.images[0]}` alt=`${item.plantName}`)
+                .items__content
+                  h2.items__name= item.plantName
+                  h3.items__cat= item.plantType
+                  h2.items__price= `₹${item.price}`
+                .items__feature
+                  div.items__ratings
+                    div
+                      -let rating = Math.floor(item.ratings)
+                      each _ in Array(rating)
+                        +star()
+                      each _ in Array(5 - rating)
+                        +star("none")
+                    h2.ratings__title (#{item.ratings})
+                  .purchase-icons
+                    img#cart.purchase-icon(src='/icons/cart.svg' alt='Add to cart' title='Add to cart')
+                    svg.purchase-icon.wishlist-wishlist.wishlist(xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewbox='0 0 24 24' stroke-width='1.5' stroke='none' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                      path(stroke='none' d='M0 0h24v24H0z' fill='none')
+                      path(style='pointer-events: none' d='M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572')
+                    img#remove-wishlist-item.purchase-icon(src='/icons/delete.svg' alt='Remove item' title='Remove item')
+            each item in wishlist[0].pot
+              .items(data-prodid=`${item._id}` data-type="pot")
+                img.items__image(src=`/img/${item.images[0]}` alt=`${item.potName}`)
+                .items__content
+                  h2.items__name= item.potName
+                  h3.items__cat Natural pot
+                  h2.items__price= `₹${item.price}`
+                .items__feature
+                  div.items__ratings
+                    div
+                      -let rating = Math.floor(item.ratings)
+                      each _ in Array(rating)
+                        +star()
+                      each _ in Array(5 - rating)
+                        +star("none")
+                    h2.ratings__title (#{item.ratings})
+                  .purchase-icons
+                    img#cart.purchase-icon(src='/icons/cart.svg' alt='Add to cart' title='Add to cart')
+                    svg.purchase-icon.wishlist-wishlist.wishlist(xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewbox='0 0 24 24' stroke-width='1.5' stroke='none' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                      path(stroke='none' d='M0 0h24v24H0z' fill='none')
+                      path(style='pointer-events: none' d='M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572')
+                    img#remove-wishlist-item.purchase-icon(src='/icons/delete.svg' alt='Remove item' title='Remove item')
+          else 
+            h1(style="color:gray;") No items!
+    img.greenbuy-watermark.cart-watermark(src='/icons/green-icon.svg' alt='icon')
+    include _menu 

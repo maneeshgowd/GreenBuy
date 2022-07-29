@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="images/svg" href="icons/favicon.svg" />
+    <script type="module" src="js/controller.js" defer></script>
+    <title>GreenBuy</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <main class="main" id="top">
+        <div class="main-image">
+          <img src="img/leaf-1.jpg" alt="main-image" class="main-image__image" id="main-image" />
+        </div>
+        <header class="header" id="index-header">
+          <nav class="nav--logo">
+            <a href="/" class="nav__ele header--logo">
+              <img src="icons/icon.svg" alt="GreenBuy logo" class="header__logo icons" />
+              <span>GreenBuy</span></a
+            >
+          </nav>
+
+          <nav class="nav">
+            <a href="#" class="nav__ele">plants</a>
+            <a href="pots.html" class="nav__ele">pots</a>
+            <!-- <a href="#" class="nav__ele">contact</a> -->
+            <button class="categories icons--icon" id="categories-btn">
+              Categories
+              <span
+                ><img src="icons/chevorn.svg" class="icons--mini chevorn" alt="arrow down"
+              /></span>
+            </button>
+          </nav>
+
+          <nav class="tooltip-helper tooltip" id="categories-tooltip">
+            <div>
+              <h2 class="tooltip-title">Goto</h2>
+              <a href="#popular-products">popular products</a>
+              <a href="#exclusive-products">pots and plants</a>
+            </div>
+            <div>
+              <h2 class="tooltip-title">Products</h2>
+              <a href="#">Air purifiers</a>
+              <a href="#">Medicinal plants</a>
+              <a href="#">Easy to care</a>
+              <a href="#">Flowering plants</a>
+            </div>
+          </nav>
+
+          <nav class="nav">
+            <a href="login.html" class="nav__ele icons--icon"
+              >login <span><img src="icons/login.svg" class="icons--mini" alt="login" /></span
+            ></a>
+            <a href="#" class="nav__ele icons--icon"
+              >signup <span><img src="icons/signup.svg" class="icons--mini" alt="login" /></span
+            ></a>
+
+            <a href="#" class="nav__ele" id="user-login">
+              <img src="icons/user-avatar.svg" alt="user" class="icons" />
+            </a>
+          </nav>
+
+          <img
+            src="icons/hamburger.svg"
+            alt="menu-bar"
+            class="hamburger icons"
+            id="product-hamburger"
+          />
+        </header>
+
+        <div class="content">
+          <span class="content__title title--sub">be natural</span>
+          <h1 class="content__title" id="main-title">
+            easy to care plants with nutrients rich soil
+          </h1>
+          <a href="./product.html" class="content__btn">Explore products</a>
+        </div>
+      </main>
+
+      <section class="products">
+        <div class="products-container">
+          <div class="popular-products" id="popular-products">
+            <div class="product-content">
+              <h1 class="product-content__title">Popular products</h1>
+              <a href="#" class="product-content__btn">see all</a>
+            </div>
+            <div class="plant-image">
+              <figure class="plant">
+                <a href="#">
+                  <img src="img/plant-1.jpg" alt="Easy to care plant" class="plant__img" />
+                  <figcaption class="figure">
+                    <h2 class="figure__title">Easy to care</h2>
+                    <h2 class="figure__title figure--rating">
+                      &bigstar;&bigstar;&bigstar;&bigstar;&star;
+                    </h2>
+                  </figcaption>
+                </a>
+              </figure>
+              <figure class="plant">
+                <a href="#">
+                  <img src="img/plant-2.jpg" alt="Medicinal and herbal plant" class="plant__img" />
+                  <figcaption class="figure">
+                    <h2 class="figure__title">Medicinal and herbal plant</h2>
+                    <h2 class="figure__title figure--rating">
+                      &bigstar;&bigstar;&bigstar;&bigstar;&bigstar;
+                    </h2>
+                  </figcaption>
+                </a>
+              </figure>
+              <figure class="plant">
+                <a href="#">
+                  <img src="img/plant-3.jpg" alt="Air purifiers plant" class="plant__img" />
+                  <figcaption class="figure">
+                    <h2 class="figure__title">Air purifiers</h2>
+                    <h2 class="figure__title figure--rating">
+                      &bigstar;&bigstar;&bigstar;&bigstar;&star;
+                    </h2>
+                  </figcaption>
+                </a>
+              </figure>
+              <figure class="plant">
+                <a href="#">
+                  <img src="img/plant-4.jpg" alt="Flowering plants" class="plant__img" />
+                  <figcaption class="figure">
+                    <h2 class="figure__title">Flowering plants</h2>
+                    <h2 class="figure__title figure--rating">
+                      &bigstar;&bigstar;&bigstar;&bigstar;&bigstar;
+                    </h2>
+                  </figcaption>
+                </a>
+              </figure>
+            </div>
+          </div>
+          <div class="exclusive-product" id="exclusive-products">
+            <div class="product-content">
+              <h1 class="product-content__title">Exclusive pots and plants</h1>
+              <a href="#" class="product-content__btn">see all</a>
+            </div>
+            <div class="exclusive-plants">
+              <figure class="exclusive-plant">
+                <a href="#">
+                  <img
+                    src="img/pot-1.jpg"
+                    alt="Exclusive pots and plants"
+                    class="exclusive-plant__img"
+                  />
+                </a>
+              </figure>
+              <figure class="exclusive-plant">
+                <a href="#">
+                  <img
+                    src="img/pot-2.jpg"
+                    alt="Exclusive pots and plants"
+                    class="exclusive-plant__img"
+                  />
+                </a>
+              </figure>
+              <figure class="exclusive-plant exclusive--mini">
+                <a href="#">
+                  <img
+                    src="img/pot-3.jpg"
+                    alt="Exclusive pots and plants"
+                    class="exclusive-plant__img"
+                  />
+                </a>
+              </figure>
+              <figure class="exclusive-plant exclusive--mini">
+                <a href="#">
+                  <img
+                    src="img/pot-4.jpg"
+                    alt="Exclusive pots and plants"
+                    class="exclusive-plant__img"
+                  />
+                </a>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="about">
+        <div class="facilities">
+          <img src="icons/phone.svg" alt="24/7 support" class="facilities__img" />
+          <h2 class="facilities__title">Customer service</h2>
+          <p class="facilities__para">
+            Easily contact us with our helpline We provide 24 / 7 customer service.
+          </p>
+        </div>
+        <div class="facilities">
+          <img src="icons/truck.svg" alt="Free delivery" class="facilities__img" />
+          <h2 class="facilities__title">Free delivery</h2>
+          <p class="facilities__para">
+            No shipping charges above order $999. An amazing place for better products.
+          </p>
+        </div>
+        <div class="facilities">
+          <img src="icons/time.svg" alt="Easy return" class="facilities__img" />
+          <h2 class="facilities__title">7 days return</h2>
+          <p class="facilities__para">
+            Easy 7 day return policy, with no extra charges and 100% money back gurantee.
+          </p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-container">
+          <nav class="nav--logo">
+            <a href="/" class="nav__ele header--logo">
+              <img src="icons/icon.svg" alt="GreenBuy logo" class="header__logo icons" />
+              <span>GreenBuy</span></a
+            >
+          </nav>
+          <nav class="nav">
+            <a href="#" class="nav__ele">plants</a>
+            <a href="#" class="nav__ele">pots</a>
+            <a href="#" class="nav__ele">contact</a>
+          </nav>
+          <nav class="nav">
+            <a href="#" class="nav__ele">login</a>
+            <a href="#" class="nav__ele">signup</a>
+          </nav>
+
+          <nav class="social-links">
+            <a href="#">
+              <img
+                src="icons/instagram.svg"
+                alt="instagram"
+                title="instagram"
+                class="icons--mini"
+              />
+            </a>
+
+            <a href="#">
+              <img src="icons/twitter.svg" alt="instagram" title="twitter" class="icons--mini" />
+            </a>
+          </nav>
+
+          <nav class="top">
+            <a href="#top">
+              <img src="icons/arrow.svg" alt="top" title="go top" class="icons--mini" />
+            </a>
+          </nav>
+
+          <span class="copyright">&copy; Copyright. All rights reserved</span>
+        </div>
+      </footer>
+    </div>
+    <div class="menu hidden-helper" id="product-menu">
+      <img src="icons/cancel.svg" alt="close" class="menu__cancel icons" id="cancel-hamburger" />
+
+      <a href="#" class="menu-link">
+        <img src="icons/home.svg" alt="home" class="icons--mini" />
+        <span>Home</span>
+      </a>
+      <a href="#" class="menu-link">
+        <img src="icons/pot.svg" alt="pot" class="icons--mini" />
+        <span>Pots</span>
+      </a>
+      <!-- <a href="#" class="menu-link">
+        <img src="icons/contact.svg" alt="contact" class="icons--mini" />
+        <span>Contact</span>
+      </a> -->
+
+      <div class="menu-categories">
+        <h2>Categories &blacktriangledown;</h2>
+        <a href="#popular-products" class="menu-link">popular products</a>
+        <a href="#exclusive-products" class="menu-link">pots and plants</a>
+        <a href="#" class="menu-link">Air purifiers</a>
+        <a href="#" class="menu-link">Medicinal plants</a>
+        <a href="#" class="menu-link">Easy to care</a>
+        <a href="#" class="menu-link">Flowering plants</a>
+      </div>
+      <div class="auth">
+        <a href="#" class="menu-link">login</a>
+        <a href="#" class="menu-link">Signup</a>
+      </div>
+    </div>
+  </body>
+</html>

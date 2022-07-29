@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/controller.js" defer></script>
+    <title>GreenBuy | Wishlist</title>
+  </head>
+  <body>
+    <div class="wrapper cart-wrapper">
+      <main class="cart-main">
+        <header class="header--prod">
+          <nav class="nav--logo">
+            <a href="/" class="nav__ele header--logo">
+              <img src="icons/green-icon.svg" alt="GreenBuy logo" class="header__logo icons" />
+              <span class="logo-title">GreenBuy</span></a
+            >
+          </nav>
+
+          <nav class="links">
+            <a href="#" class="links__ele">home</a>
+            <a href="#" class="links__ele">pots</a>
+            <!-- <a href="#" class="links__ele">contact</a> -->
+            <a href="#" class="links__ele">products</a>
+          </nav>
+
+          <nav class="user-nav">
+            <span id="cart-items" class="cart-items"></span>
+            <a href="">
+              <img src="icons/cart.svg" alt="user cart" class="nav--icons" />
+            </a>
+            <a href="">
+              <img src="icons/heart.svg" alt="wishlist" class="nav--icons" />
+            </a>
+            <a href="">
+              <img src="icons/user-avatar.svg" alt="user" class="nav--icons" />
+            </a>
+          </nav>
+
+          <img
+            src="icons/hamburger-2.svg"
+            alt="menu-bar"
+            class="hamburger icons"
+            id="product-hamburger"
+          />
+        </header>
+
+        <section class="purchased">
+          <div class="purchased-items">
+            <div class="items">
+              <img src="img/leaf-1.jpg" alt="product-image" class="items__image" />
+
+              <div class="items__content">
+                <h2 class="items__name">Marigold plant</h2>
+                <h3 class="items__cat">Air purifier</h3>
+                <h2 class="items__price">₹ 299</h2>
+              </div>
+
+              <div class="items__feature">
+                <div>
+                  <button class="items__feature__btn btn--decrement">&minus;</button>
+                  <input type="number" class="product-count" min="1" max="10" />
+                  <button class="items__feature__btn btn--increment">&plus;</button>
+                </div>
+                <div class="purchase-icons">
+                  <img
+                    src="icons/cart.svg"
+                    alt="Add to cart"
+                    title="Add to cart"
+                    class="purchase-icon"
+                  />
+
+                  <img
+                    src="icons/heart.svg"
+                    alt="wishlist"
+                    title="Wishlist"
+                    class="purchase-icon"
+                  />
+
+                  <img
+                    src="icons/delete.svg"
+                    alt="Remove item"
+                    title="Remove item"
+                    class="purchase-icon"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="items">
+              <img src="img/leaf-1.jpg" alt="product-image" class="items__image" />
+
+              <div class="items__content">
+                <h2 class="items__name">Marigold plant</h2>
+                <h3 class="items__cat">Air purifier</h3>
+                <h2 class="items__price">₹ 299</h2>
+              </div>
+
+              <div class="items__feature">
+                <div>
+                  <button class="items__feature__btn btn--decrement">&minus;</button>
+                  <input type="number" class="product-count" min="1" max="10" />
+                  <button class="items__feature__btn btn--increment">&plus;</button>
+                </div>
+                <div class="purchase-icons">
+                  <img
+                    src="icons/cart.svg"
+                    alt="Add to cart"
+                    title="Add to cart"
+                    class="purchase-icon"
+                  />
+                  <img
+                    src="icons/heart.svg"
+                    alt="wishlist"
+                    title="Wishlist"
+                    class="purchase-icon"
+                  />
+                  <img
+                    src="icons/delete.svg"
+                    alt="Remove item"
+                    title="Remove item"
+                    class="purchase-icon"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="items">
+              <img src="img/leaf-1.jpg" alt="product-image" class="items__image" />
+
+              <div class="items__content">
+                <h2 class="items__name">Marigold plant</h2>
+                <h3 class="items__cat">Air purifier</h3>
+                <h2 class="items__price">₹ 299</h2>
+              </div>
+
+              <div class="items__feature">
+                <div>
+                  <button class="items__feature__btn btn--decrement">&minus;</button>
+                  <input type="number" class="product-count" min="1" max="10" />
+                  <button class="items__feature__btn btn--increment">&plus;</button>
+                </div>
+                <div class="purchase-icons">
+                  <img
+                    src="icons/cart.svg"
+                    alt="Add to cart"
+                    title="Add to cart"
+                    class="purchase-icon"
+                  />
+                  <img
+                    src="icons/heart.svg"
+                    alt="wishlist"
+                    title="Wishlist"
+                    class="purchase-icon"
+                  />
+                  <img
+                    src="icons/delete.svg"
+                    alt="Remove item"
+                    title="Remove item"
+                    class="purchase-icon"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="items">
+              <img src="img/leaf-1.jpg" alt="product-image" class="items__image" />
+
+              <div class="items__content">
+                <h2 class="items__name">Marigold plant</h2>
+                <h3 class="items__cat">Air purifier</h3>
+                <h2 class="items__price">₹ 299</h2>
+              </div>
+
+              <div class="items__feature">
+                <div>
+                  <button class="items__feature__btn btn--decrement">&minus;</button>
+                  <input type="number" class="product-count" min="1" max="10" />
+                  <button class="items__feature__btn btn--increment">&plus;</button>
+                </div>
+                <div class="purchase-icons">
+                  <img
+                    src="icons/cart.svg"
+                    alt="Add to cart"
+                    title="Add to cart"
+                    class="purchase-icon"
+                  />
+                  <img
+                    src="icons/heart.svg"
+                    alt="wishlist"
+                    title="Wishlist"
+                    class="purchase-icon"
+                  />
+                  <img
+                    src="icons/delete.svg"
+                    alt="Remove item"
+                    title="Remove item"
+                    class="purchase-icon"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <img src="icons/green-icon.svg" alt="icon" class="greenbuy-watermark cart-watermark" />
+
+      <div class="menu product--menu hidden-helper" id="product-menu">
+        <img src="icons/cancel.svg" alt="close" class="menu__cancel icons" id="cancel-hamburger" />
+        <a href="#" class="menu-link">
+          <img src="icons/home.svg" alt="home" class="icons--mini" />
+          <span>Home</span>
+        </a>
+        <a href="#" class="menu-link">
+          <img src="icons/pot.svg" alt="pot" class="icons--mini" />
+          <span>Pots</span>
+        </a>
+        <!-- <a href="#" class="menu-link">
+          <img src="icons/contact.svg" alt="contact" class="icons--mini" />
+          <span>Contact</span>
+        </a> -->
+
+        <nav class="user-nav menu-nav">
+          <a href="#" class="menu-link">
+            <img src="icons/cart-2.svg" alt="user cart" class="icons--mini" />
+            <span>Shopping cart</span>
+          </a>
+          <a href="#" class="menu-link">
+            <img src="icons/heart-2.svg" alt="wishlist" class="icons--mini" />
+            <span>My favourites</span>
+          </a>
+          <a href="#" class="menu-link">
+            <img src="icons/user-avatar.svg" alt="user" class="icons--mini" />
+            <span>My account</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </body>
+</html>

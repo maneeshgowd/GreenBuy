@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="scss/style.scss" />
+    <script src="js/controller.js" defer></script>
+    <title>GreenBuy | Cart</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <main class="product-product">
+        <header class="header--prod">
+          <nav class="nav--logo">
+            <a href="/" class="nav__ele header--logo">
+              <img src="icons/green-icon.svg" alt="GreenBuy logo" class="header__logo icons" />
+              <span class="logo-title">GreenBuy</span></a
+            >
+          </nav>
+
+          <nav class="links">
+            <a href="#" class="links__ele">home</a>
+            <a href="#" class="links__ele">plants</a>
+            <a href="#" class="links__ele">pots</a>
+            <!-- <a href="#" class="links__ele">contact</a> -->
+          </nav>
+
+          <nav class="user-nav">
+            <span id="cart-items" class="cart-items"></span>
+            <a href="cart.html">
+              <img src="icons/cart.svg" alt="user cart" class="nav--icons" title="Shopping cart" />
+            </a>
+            <a href="">
+              <img src="icons/heart.svg" alt="wishlist" class="nav--icons" title="Wishlist" />
+            </a>
+            <a href="">
+              <img src="icons/user-avatar.svg" alt="user" class="nav--icons" title="Profile" />
+            </a>
+          </nav>
+
+          <img
+            src="icons/hamburger-2.svg"
+            alt="menu-bar"
+            class="hamburger icons"
+            id="product-hamburger"
+          />
+        </header>
+
+        <button class="filter--btn" id="filter--btn">filter</button>
+
+        <aside class="filter hidden-helper" id="filter">
+          <h2 class="filter__title">filter</h2>
+          <img
+            src="icons/cancel-2.svg"
+            alt="cancel"
+            class="filter-cancel icons"
+            id="filter-cancel"
+          />
+
+          <div class="filter__price">
+            <h2 class="filter__price__title">price range</h2>
+            <div>
+              <input type="number" placeholder="Min" min="100" />
+              <input type="number" placeholder="Max" min="200" max="9999" />
+            </div>
+          </div>
+
+          <div class="filter__rating">
+            <h2 class="filter__rating__title">Rating</h2>
+            <div class="rating-icons">
+              <input type="checkbox" />
+              <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+              <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+              <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+              <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+              <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+              <span>above</span>
+            </div>
+          </div>
+
+          <button class="set__cat">Set Filter</button>
+        </aside>
+
+        <section class="product-display">
+          <div class="sort">
+            <h2 class="sort__title">Sort</h2>
+            <button class="sort__btn">most popular</button>
+            <button class="sort__btn">
+              most new
+              <!-- <img src="icons/cancel.svg" alt="cancel" class="icons--mini" /> -->
+            </button>
+          </div>
+
+          <div class="product-container">
+            <div class="product--prod" id="product">
+              <img src="img/pot-2.jpg" alt="" class="product-image" />
+              <h2 class="product-name">product name</h2>
+              <div class="product-rating">
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <h2 class="rating-title">(85)</h2>
+              </div>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-heart wishlist-icon"
+                id="wishlist-icon"
+                width="44"
+                height="44"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="none"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                  style="pointer-events: none"
+                  d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"
+                />
+              </svg>
+
+              <div class="shopping-cart hidden-helper" id="cart-anim">
+                <img src="icons/cart-2.svg" alt="cart" class="cart-anim" />
+              </div>
+              <div class="product-price">
+                <h2 class="price">₹ 299</h2>
+                <button class="add-cart" id="add-cart-btn">Add to cart</button>
+              </div>
+            </div>
+
+            <div class="product--prod">
+              <img src="img/pot-2.jpg" alt="" class="product-image" />
+              <h2 class="product-name">product name</h2>
+              <div class="product-rating">
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <h2 class="rating-title">(82)</h2>
+              </div>
+              <div class="product-price">
+                <h2 class="price">₹ 299</h2>
+                <button class="add-cart">Add to cart</button>
+              </div>
+            </div>
+
+            <div class="product--prod">
+              <img src="img/pot-2.jpg" alt="" class="product-image" />
+              <h2 class="product-name">product name</h2>
+              <div class="product-rating">
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <h2 class="rating-title">(82)</h2>
+              </div>
+              <div class="product-price">
+                <h2 class="price">₹ 299</h2>
+                <button class="add-cart">Add to cart</button>
+              </div>
+            </div>
+
+            <div class="product--prod">
+              <img src="img/pot-2.jpg" alt="" class="product-image" />
+              <h2 class="product-name">product name</h2>
+              <div class="product-rating">
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <h2 class="rating-title">(82)</h2>
+              </div>
+              <div class="product-price">
+                <h2 class="price">₹ 299</h2>
+                <button class="add-cart">Add to cart</button>
+              </div>
+            </div>
+
+            <div class="product--prod">
+              <img src="img/pot-2.jpg" alt="" class="product-image" />
+              <h2 class="product-name">product name</h2>
+              <div class="product-rating">
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <h2 class="rating-title">(82)</h2>
+              </div>
+              <div class="product-price">
+                <h2 class="price">₹ 299</h2>
+                <button class="add-cart">Add to cart</button>
+              </div>
+            </div>
+
+            <div class="product--prod">
+              <img src="img/pot-2.jpg" alt="" class="product-image" />
+              <h2 class="product-name">product name</h2>
+              <div class="product-rating">
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <h2 class="rating-title">(82)</h2>
+              </div>
+              <div class="product-price">
+                <h2 class="price">₹ 299</h2>
+                <button class="add-cart">Add to cart</button>
+              </div>
+            </div>
+
+            <div class="product--prod">
+              <img src="img/pot-2.jpg" alt="" class="product-image" />
+              <h2 class="product-name">product name</h2>
+              <div class="product-rating">
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <h2 class="rating-title">(82)</h2>
+              </div>
+              <div class="product-price">
+                <h2 class="price">₹ 299</h2>
+                <button class="add-cart">Add to cart</button>
+              </div>
+            </div>
+
+            <div class="product--prod">
+              <img src="img/pot-2.jpg" alt="" class="product-image" />
+              <h2 class="product-name">product name</h2>
+              <div class="product-rating">
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <h2 class="rating-title">(82)</h2>
+              </div>
+              <div class="product-price">
+                <h2 class="price">₹ 299</h2>
+                <button class="add-cart">Add to cart</button>
+              </div>
+            </div>
+
+            <div class="product--prod">
+              <img src="img/pot-2.jpg" alt="" class="product-image" />
+              <h2 class="product-name">product name</h2>
+              <div class="product-rating">
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <h2 class="rating-title">(82)</h2>
+              </div>
+              <div class="product-price">
+                <h2 class="price">₹ 299</h2>
+                <button class="add-cart">Add to cart</button>
+              </div>
+            </div>
+
+            <div class="product--prod">
+              <img src="img/pot-2.jpg" alt="" class="product-image" />
+              <h2 class="product-name">product name</h2>
+              <div class="product-rating">
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <h2 class="rating-title">(82)</h2>
+              </div>
+              <div class="product-price">
+                <h2 class="price">₹ 299</h2>
+                <button class="add-cart">Add to cart</button>
+              </div>
+            </div>
+
+            <div class="product--prod">
+              <img src="img/pot-2.jpg" alt="" class="product-image" />
+              <h2 class="product-name">product name</h2>
+              <div class="product-rating">
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <h2 class="rating-title">(82)</h2>
+              </div>
+              <div class="product-price">
+                <h2 class="price">₹ 299</h2>
+                <button class="add-cart">Add to cart</button>
+              </div>
+            </div>
+
+            <div class="product--prod">
+              <img src="img/pot-2.jpg" alt="" class="product-image" />
+              <h2 class="product-name">product name</h2>
+              <div class="product-rating">
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <img src="icons/star.svg" alt="ratings star" class="icons--mini" />
+                <h2 class="rating-title">(82)</h2>
+              </div>
+              <div class="product-price">
+                <h2 class="price">₹ 299</h2>
+                <button class="add-cart">Add to cart</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div class="menu product--menu hidden-helper" id="product-menu">
+        <img src="icons/cancel.svg" alt="close" class="menu__cancel icons" id="cancel-hamburger" />
+        <a href="#" class="menu-link">
+          <img src="icons/home.svg" alt="home" class="icons--mini" />
+          <span>Home</span>
+        </a>
+        <a href="#" class="menu-link">
+          <img src="icons/pot.svg" alt="pot" class="icons--mini" />
+          <span>Pots</span>
+        </a>
+        <!-- <a href="#" class="menu-link">
+          <img src="icons/contact.svg" alt="contact" class="icons--mini" />
+          <span>Contact</span>
+        </a> -->
+
+        <nav class="user-nav menu-nav">
+          <a href="#" class="menu-link">
+            <img src="icons/cart-2.svg" alt="user cart" class="icons--mini" />
+            <span>Shopping cart</span>
+          </a>
+          <a href="#" class="menu-link">
+            <img src="icons/heart-2.svg" alt="wishlist" class="icons--mini" />
+            <span>My favourites</span>
+          </a>
+          <a href="#" class="menu-link">
+            <img src="icons/user-avatar.svg" alt="user" class="icons--mini" />
+            <span>My account</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </body>
+</html>

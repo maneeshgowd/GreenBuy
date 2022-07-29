@@ -1,0 +1,41 @@
+extends base
+
+block content 
+  header.header
+    nav.nav--logo
+      a.nav__ele.header--logo(href='/')
+        img.header__logo.icons(src='/icons/green-icon.svg' alt='GreenBuy logo')
+        span.logo-title GreenBuy
+    a.signup.sign--btn(href='/signup') signup
+  form#form--login.form(action='#')
+    h1.form__title login
+    .form__email
+      input#email(type='email' name='email' required='')
+      label(for='email') email
+    .form__pass
+      input#password(type='password' name='password' minlength='8' maxlength='15' required='')
+      label(for='password') password
+      img#login-pass-icon.icons--mini.auth-icon(src='/icons/eye-off.svg' alt='show password')
+    button.form__btn Login
+    a.sign-up(href='/signup') Create an account?
+    a#forget-pass.sign-up(href="#") Forgot password?
+  form#forget--email.form.hidden-helper(action='#')
+    h1.form__title Enter registered email
+    input#email-forget(type="email" name="email" placeholder="example@gmail.com" required)
+    button.form__btn verify
+  form#token.hidden-helper.form(action='#')
+    h1.form__title Verify token
+    p enter token sent to your email
+    </br>
+    input#forget-token(type="text" name="token" placeholder="token" required)
+    .form__pass
+      input#newPassword(type='password' name='password' minlength='8' maxlength='15' required='')
+      label(for='password') password
+      img#forget-pass-icon.icons--mini.auth-icon(src='/icons/eye-off.svg' alt='show password')
+    .form__pass
+      input#confirmNewPassword(type='password' name='passwordConfirm' minlength='8' maxlength='15' required='')
+      label(for='passwordConfirm') repeat password
+      img#forget-pass-icon.icons--mini.auth-icon(src='/icons/eye-off.svg' alt='show password')
+    button.form__btn submit
+  img.greenbuy-watermark(src='/icons/green-icon.svg' alt='icon')
+
